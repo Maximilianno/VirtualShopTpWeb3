@@ -21,7 +21,9 @@
     <asp:Label ID="Label4" runat="server" Text="Fecha:"></asp:Label>
      <asp:TextBox ID="txtbxFechaDeCompra" runat="server" 
             ontextchanged="txtbxFechaDeCompra_TextChanged"></asp:TextBox>  
-    
+        <asp:Button ID="btnMostrarFecha" runat="server" Text="Button" 
+            onclick="btnMostrarFecha_Click" />
+    <asp:Label ID="lblMostrarFecha" runat="server" Text=""></asp:Label>
     </div>
     
          <div class="mgrid">

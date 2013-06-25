@@ -15,5 +15,10 @@ namespace VisualStudio.VS.Servicio
         {
             return nuevo.obtenerVentas(idTienda);
         }
+
+        public DataTable buscarVentasPorId(DateTime fechaDeCompra)
+        {
+            return nuevo.obtenerVentasPorId(fechaDeCompra);
+        }
     }
 }

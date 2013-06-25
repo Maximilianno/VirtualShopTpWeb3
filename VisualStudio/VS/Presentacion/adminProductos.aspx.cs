@@ -127,8 +127,9 @@ namespace VisualStudio.VS
             int id = Convert.ToInt32(cell.Text);
             ProductoServicio productoServicio = new ProductoServicio();
             productoServicio.eliminar(id);
-
-            lblMessage.Text = "El producto ah sido eliminado correctamente";
+            gvAdmProd.DataBind();
+            Response.Redirect("adminProductos.aspx");
+            
         }
 
         

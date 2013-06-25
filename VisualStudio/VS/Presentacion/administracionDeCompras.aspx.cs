@@ -119,12 +119,22 @@ namespace VisualStudio.VS
             //gvAdmCompras.EditIndex = -1;
             //gvAdmCompras.DataSource = DSTable;
             //gvAdmCompras.DataBind();
+            
         }
 
         
 
         protected void gvAdmCompras_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
+
+        }
+
+        protected void btnMostrarFecha_Click(object sender, EventArgs e)
+        {
+            DateTime fechaDeCompra = Convert.ToDateTime(txtbxFechaDeCompra.Text);
+            CompraServicio serviceCompra = new CompraServicio();
+            gvAdmCompras.DataSource = serviceCompra.buscarVentasPorId(fechaDeCompra);
+            gvAdmCompras.DataBind();
 
         }
 

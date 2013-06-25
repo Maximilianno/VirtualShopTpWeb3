@@ -353,5 +353,26 @@ namespace VisualStudio.VS.Datos
             }
             else return null;
         }
+
+        internal DataTable obtenerVentasPorId(DateTime fechaDeCompra)
+        {
+            if (conectar())
+            {
+
+                SqlParameter paramIdTienda = new SqlParameter("@FECHA", fechaDeCompra);
+
+                SqlCommand miComando = new SqlCommand("p_ObtenerComprasPorFecha", sqlconn); //ejecuto la StoreProcedure en la BD
+                miComando.CommandType = CommandType.StoredProcedure;
+
+
+                miComando.Parameters.Add(paramIdTienda);
+
+                DataTable miTabla = new DataTable();
+                miTabla.Load(miComando.ExecuteReader());
+                return miTabla;
+
+            }
+            else return null;
+        }
     }
 }
