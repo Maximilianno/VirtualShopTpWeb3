@@ -30,13 +30,13 @@ namespace VisualStudio.VS
             
             TiendaServicio tiendaServicio = new TiendaServicio();
             string email = txtEmail.Text;
-            int validador = tiendaServicio.loginTienda(email);
-            if (validador==1)
+            string password = txtPassword.Text;
+            
+            DataTable tabla = new DataTable();
+            tabla = tiendaServicio.loginTienda(email, password);
+            if (tabla.Rows.Count != 0)
             {
                 Tienda userTienda = new Tienda();
-                DataTable tabla = new DataTable();
-                
-                tabla = tiendaServicio.obtener(txtEmail.Text);
 
                 userTienda.Password = Convert.ToString(tabla.Rows[0]["Password"]);
                 userTienda.Id = Convert.ToInt32(tabla.Rows[0]["Id"]);
@@ -47,15 +47,17 @@ namespace VisualStudio.VS
 
                 Session["TiendaOnline"] = userTienda;
 
-                
+
                 noLog.Visible = false;
                 loge.Visible = true;
                 menu.Visible = true;
                 Tienda tienda = new Tienda();
                 tienda = (Tienda)Session["TiendaOnline"];
                 lblPrueba.Text = tienda.RazonSocial;
-                
+
             }
+            else
+                Response.Redirect("default.aspx");
 
             //TiendaServicio servicioTienda = new TiendaServicio();
             //Tienda userLog = new Tienda();

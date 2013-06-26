@@ -12,7 +12,7 @@ namespace VisualStudio.VS.Datos
     {
         SqlConnection sqlconn;
         Object resultado;
-
+        #region Conexion
         protected void Page_Load(object sender, EventArgs e)
         {
             conectar();
@@ -35,96 +35,39 @@ namespace VisualStudio.VS.Datos
             miConexion.IntegratedSecurity = true;
             return miConexion.ConnectionString;
         }
-        //Llena el DDL con las categorias
-        public DataTable obtenerCategorias()
-        {
-            if (conectar())
-            {
-                DataTable MiTabla = new DataTable();
-                SqlDataAdapter Comando = new SqlDataAdapter("SELECT * FROM Categoria", sqlconn);
-                var tabla = Comando.Fill(MiTabla);
+        #endregion Conexion
+        /*          FIN DE CONEXION         */
 
-                return MiTabla;
 
-            }
-            else return null;
-
-        }
-        //Insertar a BD
+        #region Tienda
         public void insertarNuevaTienda(Tienda tienda)
         {
             if (conectar())
             {
                 List<SqlParameter> lista = new List<SqlParameter>();
 
-                SqlParameter paramRazonSocial = new SqlParameter("@RAZONSOCIAL",tienda.RazonSocial); //Envio el paramerto a insertar
+                SqlParameter paramRazonSocial = new SqlParameter("@RAZONSOCIAL", tienda.RazonSocial); //Envio el paramerto a insertar
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", tienda.Email);
                 SqlParameter paramPassword = new SqlParameter("@PASSWORD", tienda.Password);
                 SqlParameter paramCUIT = new SqlParameter("@CUIT", tienda.CUIT);
-                
-                
-               
-                
+
+
+
+
                 lista.Add(paramRazonSocial);
 
                 SqlCommand miComando = new SqlCommand("p_CrearTienda", sqlconn); //ejecuto la StoreProcedure en la BD
                 miComando.CommandType = CommandType.StoredProcedure;
                 miComando.Parameters.Add(paramRazonSocial);
-                
+
                 miComando.Parameters.Add(paramPassword);
                 miComando.Parameters.Add(paramCUIT);
                 miComando.Parameters.Add(paramEmail);
-                
+
                 miComando.ExecuteNonQuery();
             }
             sqlconn.Close();
         }
-
-        public DataTable obtenerTienda(String email)
-        {
-            if (conectar())
-            {
-                DataTable MiTabla = new DataTable();
-                DataRow miFila = MiTabla.NewRow();
-                SqlParameter paramEmail = new SqlParameter("@EMAIL", email); //Envio el paramerto a insertar
-
-                SqlCommand miComando = new SqlCommand("p_BuscarTienda", sqlconn); //ejecuto la StoreProcedure en la BD
-                miComando.CommandType = CommandType.StoredProcedure;
-                miComando.Parameters.Add(paramEmail);
-
-                MiTabla.Load(miComando.ExecuteReader());
-                return MiTabla;
-
-                //SqlDataReader reader = miComando.ExecuteReader();
-
-
-                //miFila.ItemArray[0] = reader[0];//id
-                //miFila.ItemArray[1] = reader[1];//email
-                //miFila.ItemArray[2] = reader[2];//razon social
-                //miFila.ItemArray[3] = reader[3];//cuit
-                //miFila.ItemArray[5] = reader[5];//estado
-                //return miFila;
-                
-
-            }
-            else return null;
-
-        }
-
-
-        //Listar Provincias
-       /* public DataSet mostrarProvincias()
-        {
-            if (conectar())
-            {
-                DataSet ds = new DataSet();
-                string consulta = "SELECT * FROM Provincia"; //Consulta q lista todas las Provincias
-                SqlDataAdapter data = new SqlDataAdapter(consulta, sqlconn);
-                data.Fill(ds);
-                return ds;
-            }
-            else return null;
-        }*/
 
 
 
@@ -167,34 +110,28 @@ namespace VisualStudio.VS.Datos
            
         }
 
-        public int loginTienda(string email)
+        public DataTable loginTienda(string email, string password)
         {
                 
                 if (conectar())
                 {
+                    
 
                     SqlParameter paramEmail = new SqlParameter("@EMAIL", email);
-                    //SqlParameter parmaPassword = new SqlParameter("@PASSWORD", password);
-                    SqlParameter paramValidador = new SqlParameter("@VALIDADOR", SqlDbType.Int, 1);
-                    paramValidador.Direction = ParameterDirection.Output;
+                    SqlParameter paramPassword = new SqlParameter("@PASSWORD", password);
+                    
 
                     SqlCommand miComando = new SqlCommand("p_Login2", sqlconn); //ejecuto la StoreProcedure en la BD
                     miComando.CommandType = CommandType.StoredProcedure;
                     miComando.Parameters.Add(paramEmail);
-                    
-                    miComando.Parameters.Add(paramValidador);
+                    miComando.Parameters.Add(paramPassword);
 
-
-                    miComando.ExecuteNonQuery();
-
-                    resultado = miComando.Parameters["@VALIDADOR"].Value;
-                    return Convert.ToInt32(resultado);
-                    
+                    DataTable miTabla = new DataTable();
+                    miTabla.Load(miComando.ExecuteReader());
+                    return miTabla;
                 }
             
-                sqlconn.Close();
-                int returnValor = Convert.ToInt32(resultado);
-                return returnValor;
+                else return null;
         }
 
         public void activarTiendaPorEmail(string modo, string email)
@@ -212,7 +149,9 @@ namespace VisualStudio.VS.Datos
             }
             sqlconn.Close();
         }
+        #endregion Tienda
 
+        #region Producto
         public void insertarNuevoProducto(Producto producto)
         {
             if (conectar())
@@ -305,9 +244,9 @@ namespace VisualStudio.VS.Datos
                 miComando.ExecuteNonQuery();
             }
         }
+        #endregion Producto
 
-
-
+        #region Categoria
         internal int obtenerIdDeCategoria(string nombre)
         {
             if (conectar())
@@ -333,6 +272,24 @@ namespace VisualStudio.VS.Datos
             return returnValor;
         }
 
+        //Llena el DDL con las categorias
+        public DataTable obtenerCategorias()
+        {
+            if (conectar())
+            {
+                DataTable MiTabla = new DataTable();
+                SqlDataAdapter Comando = new SqlDataAdapter("SELECT * FROM Categoria", sqlconn);
+                var tabla = Comando.Fill(MiTabla);
+
+                return MiTabla;
+
+            }
+            else return null;
+
+        }
+        #endregion Categoria
+
+        #region Ventas
         internal DataTable obtenerVentas(int idTienda)
         {
             if (conectar())
@@ -374,5 +331,6 @@ namespace VisualStudio.VS.Datos
             }
             else return null;
         }
+        #endregion Ventas
     }
 }

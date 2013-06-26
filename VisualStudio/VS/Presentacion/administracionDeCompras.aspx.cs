@@ -31,7 +31,7 @@ namespace VisualStudio.VS
             }
             else
                 Response.Redirect("default.aspx");
-
+            //****************************************
             if (!IsPostBack)
             {
                 CompraServicio service = new CompraServicio();

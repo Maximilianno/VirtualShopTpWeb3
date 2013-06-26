@@ -32,6 +32,7 @@ namespace VisualStudio.VS
                 int idTienda = tienda.Id;
                 DSTable = service.obtenerProductos(idTienda);
                 gvAdmProd.DataSource = service.obtenerProductos(idTienda);
+                //gvAdmProd.Columns[0].Visible = false;
                 gvAdmProd.DataBind();
                 
             }
@@ -64,7 +65,7 @@ namespace VisualStudio.VS
         {
 
             
-            TextBox t1 = new TextBox();
+            //TextBox t1 = new TextBox();
             TextBox t2 = new TextBox();
             TextBox t3 = new TextBox();
             TextBox t4 = new TextBox();
@@ -72,14 +73,15 @@ namespace VisualStudio.VS
             TextBox t6 = new TextBox();
             //Convert.ToInt16(HiddenField1.Value)
             
-            t1 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[0].Controls[0];
+            //t1 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[0].Controls[0];
             t2 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[1].Controls[0];
             t3 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[2].Controls[0];
             t4 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[3].Controls[0];
             t5 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[4].Controls[0];
             t6 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[5].Controls[0];
+            var colNoVisible = gvAdmProd.DataKeys[e.RowIndex].Value;
 
-            string id = t1.Text;
+            int id = Convert.ToInt32(colNoVisible);
             string nombre = t2.Text;
             string descripcion = t3.Text;
             string stock = t4.Text;
@@ -87,7 +89,7 @@ namespace VisualStudio.VS
             string categoria = t6.Text;
 
             Producto producto = new Producto();
-            producto.ID = Convert.ToInt32(id);
+            producto.ID = id;
             producto.Nombre = nombre;
             producto.Descripcion = descripcion;
             producto.Stock = Convert.ToInt32(stock);

@@ -18,10 +18,10 @@ namespace VisualStudio.VS.Servicio
             nuevo.insertarNuevaTienda(tienda);          
         }
 
-        public DataTable obtener(string email)
-        {
-            return nuevo.obtenerTienda(email);
-        }
+        //public DataTable obtener(string email)
+        //{
+        //    return nuevo.obtenerTienda(email);
+        //}
 
         public void editar(Tienda tienda)
         {
@@ -33,9 +33,9 @@ namespace VisualStudio.VS.Servicio
             nuevo.eliminarTienda(ID);
         }
 
-        public int loginTienda(string email)
+        public DataTable loginTienda(string email, string password)
         {
-            return nuevo.loginTienda(email);
+            return nuevo.loginTienda(email, password);
         }
 
         public void activarTienda(string modo, string email)

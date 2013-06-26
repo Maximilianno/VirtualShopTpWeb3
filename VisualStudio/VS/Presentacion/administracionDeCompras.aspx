@@ -29,7 +29,7 @@
          <div class="mgrid">
                  <asp:GridView ID="gvAdmCompras" runat="server" AutoGenerateColumns="false" 
         onrowediting="gvAdmCompras_RowEditing" onrowupdating="gvAdmCompras_RowUpdating" 
-                     onrowdeleted="gvAdmCompras_RowDeleted">
+                     onrowdeleted="gvAdmCompras_RowDeleted" >
                     <Columns>
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />

@@ -13,11 +13,11 @@
 
              <div class="mgrid">
                  <asp:GridView ID="gvAdmProd" runat="server" AutoGenerateColumns="false" 
-        onrowcancelingedit="gvAdmProd_RowCancelingEdit" 
-        onrowediting="gvAdmProd_RowEditing" onrowupdating="gvAdmProd_RowUpdating" 
-                     onrowdeleting="gvAdmProd_RowDeleting">
+                    onrowcancelingedit="gvAdmProd_RowCancelingEdit" 
+                    onrowediting="gvAdmProd_RowEditing" onrowupdating="gvAdmProd_RowUpdating" 
+                    onrowdeleting="gvAdmProd_RowDeleting" DataKeyNames="Id">
                     <Columns>
-                        <asp:BoundField DataField="Id" HeaderText="Id" />
+                        <asp:BoundField DataField="Id" HeaderText="Id" Visible="false"/>
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                         <asp:BoundField DataField="Stock" HeaderText="Stock" />
