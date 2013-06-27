@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using VisualStudio.VS;
 using VisualStudio.VS.Servicio;
 using VisualStudio.Entidad;
+using VisualStudio.VS.classes;
 
 namespace VisualStudio.VS
 {
@@ -15,14 +16,14 @@ namespace VisualStudio.VS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TiendaOnline"] != null)
-            {
-                Master.FindControl("noLog").Visible = false;
-                Master.FindControl("loge").Visible = true;
-                Master.FindControl("menu").Visible = true;
-            }
-            else
-                Response.Redirect("default.aspx");
+            //if (Session["TiendaOnline"] != null)
+            //{
+            //    Master.FindControl("noLog").Visible = false;
+            //    Master.FindControl("loge").Visible = true;
+            //    Master.FindControl("menu").Visible = true;
+            //}
+            //else
+            //    Response.Redirect("default.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -40,8 +41,8 @@ namespace VisualStudio.VS
                 
                 TiendaServicio tiendaServicio = new TiendaServicio();
                 tiendaServicio.insertar(tienda);
-
-               
+                Utilitarios.SendMail(tienda.Email);
+   
             }
         }
 

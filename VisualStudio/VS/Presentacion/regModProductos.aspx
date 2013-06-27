@@ -10,7 +10,7 @@
 <div class="division">
         <p class="title">Registraci&oacuten de productos</p>
          <div class="controlers">
-    
+            <div id = "dvMessage" runat = "server"></div>
             <div>
                 <div class="oneControl"><asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label></div>
                 <div class="oneControl"><asp:TextBox ID="txtbxNombre" runat="server"></asp:TextBox></div>
@@ -42,8 +42,13 @@
              
              <div>
                 <div class="oneControl"> <asp:Label ID="lbImg" runat="server" Text="Imagen:"></asp:Label></div>
+                <div class="oneControl"> 
+                 <asp:Image ID="imgProd" runat="server"/>
+                </div>
                 <div class="oneControl"> <asp:FileUpload ID="fuTiendaImg" runat="server" /></div>
-                <div class="oneControl"><asp:Label ID="lblStatus" runat="server" Text=""></asp:Label></div>
+                <div class = "oneControl">
+                    <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
+                </div>
             </div>
            
             <div>

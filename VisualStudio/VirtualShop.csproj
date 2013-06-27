@@ -56,6 +56,8 @@
   <ItemGroup>
     <Content Include="VS\img\Cancel.png" />
     <Content Include="VS\img\Cheeck.png" />
+    <Content Include="VS\img\icn_alert_error.png" />
+    <Content Include="VS\img\icn_alert_success.png" />
     <Content Include="VS\Script\jquery-1.4.1-vsdoc.js" />
     <Content Include="VS\Script\jquery-1.4.1.js" />
     <Content Include="VS\Script\jquery-1.4.1.min.js" />
@@ -120,7 +122,7 @@
   <ItemGroup>
     <Compile Include="VS\Datos\AccesoADatos.cs" />
     <Compile Include="VS\Entidad\Categoria.cs" />
-    <Compile Include="VS\Entidad\Compra.cs" />
+    <Compile Include="VS\Entidad\Venta.cs" />
     <Compile Include="VS\Entidad\Producto.cs" />
     <Compile Include="VS\Entidad\Tienda.cs" />
     <Compile Include="VS\Entidad\Usuario.cs" />
@@ -139,9 +141,10 @@
       <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="VS\Servicio\CategoriaServicio.cs" />
-    <Compile Include="VS\Servicio\CompraServicio.cs" />
+    <Compile Include="VS\Servicio\VentaServicio.cs" />
     <Compile Include="VS\Servicio\ProductoServicio.cs" />
     <Compile Include="VS\Servicio\TiendaServicio.cs" />
+    <Compile Include="VS\Servicio\Utilitarios.cs" />
     <Compile Include="VS\userControls\ucElegirCategoria.ascx.cs">
       <DependentUpon>ucElegirCategoria.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

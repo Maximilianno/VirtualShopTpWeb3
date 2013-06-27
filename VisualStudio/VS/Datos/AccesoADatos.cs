@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using VisualStudio.Entidad;
+using VisualStudio.VS.classes;
 
 namespace VisualStudio.VS.Datos
 {
@@ -30,7 +31,7 @@ namespace VisualStudio.VS.Datos
         public String cadenaDeConexion()
         {
             SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
-            miConexion.DataSource = "MAXI-HP";  //Nombre del servidor
+            miConexion.DataSource = "SERGIO-HP";  //Nombre del servidor
             miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
             miConexion.IntegratedSecurity = true;
             return miConexion.ConnectionString;
@@ -59,11 +60,8 @@ namespace VisualStudio.VS.Datos
 
                 SqlParameter paramRazonSocial = new SqlParameter("@RAZONSOCIAL",tienda.RazonSocial); //Envio el paramerto a insertar
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", tienda.Email);
-                SqlParameter paramPassword = new SqlParameter("@PASSWORD", tienda.Password);
+                SqlParameter paramPassword = new SqlParameter("@PASSWORD", Utilitarios.CalculateMD5Hash(tienda.Password));
                 SqlParameter paramCUIT = new SqlParameter("@CUIT", tienda.CUIT);
-                
-                
-               
                 
                 lista.Add(paramRazonSocial);
 

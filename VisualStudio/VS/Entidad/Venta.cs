@@ -5,7 +5,7 @@ using System.Web;
 
 namespace VisualStudio.Entidad
 {
-    public class Compra
+    public class Venta
     {
         int Id { set; get; }
         int IdProducto { set; get; }
