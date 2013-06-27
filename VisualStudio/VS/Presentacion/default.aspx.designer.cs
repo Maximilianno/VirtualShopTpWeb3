@@ -20,5 +20,14 @@ namespace VisualStudio.VS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VisualStudio.VS.ucElegirCategoria ElegirCategoria;
+        
+        /// <summary>
+        /// lblLista control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLista;
     }
 }

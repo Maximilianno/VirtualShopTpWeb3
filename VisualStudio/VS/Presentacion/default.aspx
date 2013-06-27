@@ -16,7 +16,7 @@
                   <p class="catLabelControl">Elige la categoria del producto que querieres ver</p>
                  <div>
                   <uc:ElegirCategoria id="ElegirCategoria" 
-                    runat="server"/>
+                    runat="server" />
                  </div>
         </div>
 
@@ -44,6 +44,6 @@
        </div>
        
   
-    
+    <asp:Label ID="lblLista" runat="server" Text=""></asp:Label>
 
 </asp:Content>

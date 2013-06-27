@@ -21,7 +21,9 @@ namespace VisualStudio.VS
 
         protected void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ucElegirCategoria listaCategoria = new ucElegirCategoria();
+            string lista = listaCategoria.SelectedValue;
+            lblLista.Text = lista;
         }
 
     }
