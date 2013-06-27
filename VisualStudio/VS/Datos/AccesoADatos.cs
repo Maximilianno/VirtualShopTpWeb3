@@ -31,7 +31,7 @@ namespace VisualStudio.VS.Datos
         public String cadenaDeConexion()
         {
             SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
-            miConexion.DataSource = "SERGIO-HP";  //Nombre del servidor
+            miConexion.DataSource = "MAXI-HP";  //Nombre del servidor
             miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
             miConexion.IntegratedSecurity = true;
             return miConexion.ConnectionString;
@@ -51,14 +51,7 @@ namespace VisualStudio.VS.Datos
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", tienda.Email);
                 SqlParameter paramPassword = new SqlParameter("@PASSWORD", Utilitarios.CalculateMD5Hash(tienda.Password));
                 SqlParameter paramCUIT = new SqlParameter("@CUIT", tienda.CUIT);
-<<<<<<< HEAD
 
-
-
-
-=======
-                
->>>>>>> 74ccbfec950d0ba58fff2787adc26c3bd5b925ac
                 lista.Add(paramRazonSocial);
 
                 SqlCommand miComando = new SqlCommand("p_CrearTienda", sqlconn); //ejecuto la StoreProcedure en la BD
