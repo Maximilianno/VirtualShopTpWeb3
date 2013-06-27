@@ -22,6 +22,12 @@ namespace VisualStudio.VS
             }
             else
                 Response.Redirect("default.aspx");
+
+            if (imgProd.ImageUrl == "")
+                imgProd.Visible = false;
+            else
+                imgProd.Visible = true;
+
         }
         protected void create_Click(object sender, EventArgs e)
         {
@@ -34,7 +40,12 @@ namespace VisualStudio.VS
             producto.Descripcion = txtbxDescripcion.Text;
             producto.Precio = Convert.ToInt32(txtbxPrecio.Text);
             producto.Stock = Convert.ToInt32(txtbxStock.Text);
+            
+            // producto.Imagen = fuTiendaImg.PostedFile.FileName;
+
+            lblStatus.Text = "";
             String pathImagen = "";
+            //tiendaLog = (Tienda)Session["TiendaOnline"]; //La idea es levantar la tienda de la session...
 
             if (fuTiendaImg.HasFile)
             {
@@ -51,25 +62,18 @@ namespace VisualStudio.VS
                     if (Convert.ToInt64(fuTiendaImg.PostedFile.ContentLength) < 100000000)
                     {
                         // Esto debería cambiarse porque tiene el dir de mi PC.
-                        String photoFolder = Path.Combine(@"C:\Users\maxi\Desktop\Fork\VisualStudio\VS\photos", tiendaLog.Email);
+
+                        String photoFolder = Path.Combine(Server.MapPath("~/VS/photos"), tiendaLog.Email);
                         if (!Directory.Exists(photoFolder))
                         {
                             Directory.CreateDirectory(photoFolder);
-                            String extension = Path.GetExtension(fuTiendaImg.FileName);
-                            String uniqueFileName = Path.ChangeExtension(fuTiendaImg.FileName, DateTime.Now.Ticks.ToString());
-
-                            fuTiendaImg.SaveAs(Path.Combine(photoFolder, uniqueFileName + extension));
-                            pathImagen = photoFolder + fuTiendaImg.FileName;
-
                         }
-                        else
-                        {
-                            String extension = Path.GetExtension(fuTiendaImg.FileName);
-                            String uniqueFileName = Path.ChangeExtension(fuTiendaImg.FileName, DateTime.Now.Ticks.ToString());
 
-                            fuTiendaImg.SaveAs(Path.Combine(photoFolder, uniqueFileName + extension));
-                            pathImagen = photoFolder + fuTiendaImg.FileName;
-                        }
+                        String extension = Path.GetExtension(fuTiendaImg.FileName);
+                        String uniqueFileName = Path.ChangeExtension(fuTiendaImg.FileName, DateTime.Now.Ticks.ToString());
+                        fuTiendaImg.SaveAs(Path.Combine(photoFolder, uniqueFileName + extension));
+                        pathImagen = uniqueFileName + extension;
+
                     }
                     else
                         lblStatus.Text = "El archivo debe ser menor a 10MB.";
@@ -83,28 +87,22 @@ namespace VisualStudio.VS
 
             producto.Imagen = pathImagen;
             producto.IdCategoria = Convert.ToInt32(ucElegirCategoria.SelectedValue);
-            productoServicio.insertar(producto);
 
-            // Una vez que se guarda habria que vaciar los datos y mostrar un cartelito de OK!!.
-            
+            try
+            {
+                productoServicio.insertar(producto);
+                dvMessage.InnerHtml = "<h4 class= \"alert_success\">El producto: " + txtbxNombre.Text + " ha sido insertado correctamente.</h4>";
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
 
-            //Producto producto = new Producto();
-            //producto.Nombre= txtbxNombre.Text;
-            //producto.Descripcion= txtbxDescripcion.Text;
-            //producto.Precio= Convert.ToInt32(txtbxPrecio.Text);
-            //producto.Stock = Convert.ToInt32(txtbxStock.Text);
+                dvMessage.InnerHtml = "<h4 class= \"alert_error\">Ha ocurrido un error al insertar el producto: " + txtbxNombre.Text + ".</h4>";
 
-            //Int32 tamaño = System.Convert.ToInt32(fileUploadTiendaImg.FileBytes.Length);
-            //string nombre = fileUploadTiendaImg.FileName.ToString(); 
-            //byte[] contenido = new byte[tamaño + 1];
+            }
 
-            //fileUploadTiendaImg.PostedFile.InputStream.Read(contenido, 0, tamaño);
-
-            // Get the name of the file to upload. string fileName = Server.HtmlEncode(FileUpload1.FileName);
-
-            // Get the extension of the uploaded file. string extension = System.IO.Path.GetExtension(fileName);
-
-            //productoServicio.insertar(producto);
+            imgProd.ImageUrl = "~/VS/photos/" + tiendaLog.Email + "/" + pathImagen; // Asi se usa la imagen
+            imgProd.Height = 150;
+            imgProd.Width = 150;
         }
     }
 }

@@ -7,7 +7,7 @@ using VisualStudio.VS.Datos;
 
 namespace VisualStudio.VS.Servicio
 {
-    public class CompraServicio
+    public class VentaServicio
     {
         AccesoADatos nuevo = new AccesoADatos();
 

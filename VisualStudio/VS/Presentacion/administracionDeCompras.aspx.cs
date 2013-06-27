@@ -34,7 +34,7 @@ namespace VisualStudio.VS
             //****************************************
             if (!IsPostBack)
             {
-                CompraServicio service = new CompraServicio();
+                VentaServicio service = new VentaServicio();
                 Tienda tienda = new Tienda();
                 tienda = (Tienda)Session["TiendaOnline"];
 
