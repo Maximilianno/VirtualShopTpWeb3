@@ -31,7 +31,7 @@ namespace VisualStudio.VS.classes
             try
             {
                 //Configuración del Mensaje
-                String uid = CalculateMD5Hash(dirEmail+"laClaveEs1990");
+                String uid = CalculateMD5Hash(dirEmail+"BirdIsTheWord");
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
@@ -52,7 +52,7 @@ namespace VisualStudio.VS.classes
                 SmtpServer.Send(mail);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

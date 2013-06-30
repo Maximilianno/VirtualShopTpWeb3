@@ -40,7 +40,7 @@ namespace VisualStudio.VS
                 tienda.CUIT = txtbxCUIT.Text;
                 
                 TiendaServicio tiendaServicio = new TiendaServicio();
-                tiendaServicio.insertar(tienda);
+                tiendaServicio.Insertar(tienda);
                 Utilitarios.SendMail(tienda.Email);
    
             }

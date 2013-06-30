@@ -132,7 +132,7 @@ namespace VisualStudio.VS
         protected void btnMostrarFecha_Click(object sender, EventArgs e)
         {
             DateTime fechaDeCompra = Convert.ToDateTime(txtbxFechaDeCompra.Text);
-            CompraServicio serviceCompra = new CompraServicio();
+            VentaServicio serviceCompra = new VentaServicio();
             gvAdmCompras.DataSource = serviceCompra.buscarVentasPorId(fechaDeCompra);
             gvAdmCompras.DataBind();
 

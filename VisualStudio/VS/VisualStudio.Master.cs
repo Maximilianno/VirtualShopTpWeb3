@@ -16,7 +16,14 @@ namespace VisualStudio.VS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Tienda tiendaLogged = new Tienda();
+            tiendaLogged = (Tienda)Session["TiendaOnline"];
+            if (tiendaLogged != null)
+            {
+                loge.Visible = true;
+                menu.Visible = true;
+                lblPrueba.Text = tiendaLogged.RazonSocial;
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
@@ -29,46 +36,26 @@ namespace VisualStudio.VS
         {
             
             TiendaServicio tiendaServicio = new TiendaServicio();
+            Tienda logTienda;
             string email = txtEmail.Text;
             string password = txtPassword.Text;
-            
-            DataTable tabla = new DataTable();
-            tabla = tiendaServicio.loginTienda(email, password);
-            if (tabla.Rows.Count != 0)
+
+            logTienda = tiendaServicio.LoginTienda(email, password);
+
+            if (logTienda != null)
             {
-                Tienda userTienda = new Tienda();
 
-                userTienda.Password = Convert.ToString(tabla.Rows[0]["Password"]);
-                userTienda.Id = Convert.ToInt32(tabla.Rows[0]["Id"]);
-                userTienda.Email = Convert.ToString(tabla.Rows[0]["Email"]);
-                userTienda.RazonSocial = Convert.ToString(tabla.Rows[0]["RazonSocial"]);
-                userTienda.CUIT = Convert.ToString(tabla.Rows[0]["CUIT"]);
-                userTienda.Estado = Convert.ToString(tabla.Rows[0]["Estado"]);
-
-                Session["TiendaOnline"] = userTienda;
-
-
-                noLog.Visible = false;
-                loge.Visible = true;
-                menu.Visible = true;
-                Tienda tienda = new Tienda();
-                tienda = (Tienda)Session["TiendaOnline"];
-                lblPrueba.Text = tienda.RazonSocial;
+                Session["TiendaOnline"] = logTienda;
+                Response.Redirect("default.aspx");
 
             }
             else
-                Response.Redirect("default.aspx");
+            {
+                txtEmail.Text = "";
+                txtPassword.Text = "";
+                lblMsjError.Text = "El usuario y/o el password son incorrectos";
+            }
 
-            //TiendaServicio servicioTienda = new TiendaServicio();
-            //Tienda userLog = new Tienda();
-            //userLog = servicioTienda.login(txtEmail.Text,txtPassword.Text);
-            //if (userLog != null)
-            //{
-            //    Session["userLog"] = userLog;
-            //}
-            //else {
-            //    lblMsjLog.Text = "Acceso Denegado";
-            //}
         }
     }
 }

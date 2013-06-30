@@ -30,11 +30,15 @@ namespace VisualStudio.VS.Datos
 
         public String cadenaDeConexion()
         {
-            SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
-            miConexion.DataSource = "SERGIO-HP";  //Nombre del servidor
-            miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
-            miConexion.IntegratedSecurity = true;
-            return miConexion.ConnectionString;
+            System.Configuration.Configuration rootWebConfig =
+            System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/");
+            System.Configuration.ConnectionStringSettings connString;
+            //SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
+            //miConexion.DataSource = "SERGIO-HP";  //Nombre del servidor
+            //miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
+            //miConexion.IntegratedSecurity = true;
+            connString = rootWebConfig.ConnectionStrings.ConnectionStrings["VirtualShopConnectionString"];
+            return connString.ToString();
         }
         #endregion Conexion
         /*          FIN DE CONEXION         */
@@ -45,29 +49,20 @@ namespace VisualStudio.VS.Datos
         {
             if (conectar())
             {
-                List<SqlParameter> lista = new List<SqlParameter>();
-
                 SqlParameter paramRazonSocial = new SqlParameter("@RAZONSOCIAL", tienda.RazonSocial); //Envio el paramerto a insertar
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", tienda.Email);
                 SqlParameter paramPassword = new SqlParameter("@PASSWORD", Utilitarios.CalculateMD5Hash(tienda.Password));
                 SqlParameter paramCUIT = new SqlParameter("@CUIT", tienda.CUIT);
-<<<<<<< HEAD
-
-
-
-
-=======
+                SqlParameter paramIdRegistracion = new SqlParameter("@UID", Utilitarios.CalculateMD5Hash(tienda.Email + "BirdIsTheWord"));
                 
->>>>>>> 74ccbfec950d0ba58fff2787adc26c3bd5b925ac
-                lista.Add(paramRazonSocial);
-
                 SqlCommand miComando = new SqlCommand("p_CrearTienda", sqlconn); //ejecuto la StoreProcedure en la BD
                 miComando.CommandType = CommandType.StoredProcedure;
+                
                 miComando.Parameters.Add(paramRazonSocial);
-
                 miComando.Parameters.Add(paramPassword);
                 miComando.Parameters.Add(paramCUIT);
                 miComando.Parameters.Add(paramEmail);
+                miComando.Parameters.Add(paramIdRegistracion);
 
                 miComando.ExecuteNonQuery();
             }
@@ -115,25 +110,38 @@ namespace VisualStudio.VS.Datos
            
         }
 
-        public DataTable loginTienda(string email, string password)
+        public Tienda loginTienda(string email, string password)
         {
                 
                 if (conectar())
                 {
                     
-
-                    SqlParameter paramEmail = new SqlParameter("@EMAIL", email);
+                    SqlParameter paramEmail    = new SqlParameter("@EMAIL", email);
                     SqlParameter paramPassword = new SqlParameter("@PASSWORD", password);
                     
 
-                    SqlCommand miComando = new SqlCommand("p_Login2", sqlconn); //ejecuto la StoreProcedure en la BD
+                    SqlCommand miComando = new SqlCommand("p_Login", sqlconn); //ejecuto la StoreProcedure en la BD
                     miComando.CommandType = CommandType.StoredProcedure;
                     miComando.Parameters.Add(paramEmail);
                     miComando.Parameters.Add(paramPassword);
 
                     DataTable miTabla = new DataTable();
                     miTabla.Load(miComando.ExecuteReader());
-                    return miTabla;
+                    if (miTabla.Rows.Count != 0)
+                    {
+                        Tienda userTienda = new Tienda();
+
+                        userTienda.Password = Convert.ToString(miTabla.Rows[0]["Password"]);
+                        userTienda.Id = Convert.ToInt32(miTabla.Rows[0]["Id"]);
+                        userTienda.Email = Convert.ToString(miTabla.Rows[0]["Email"]);
+                        userTienda.RazonSocial = Convert.ToString(miTabla.Rows[0]["RazonSocial"]);
+                        userTienda.CUIT = Convert.ToString(miTabla.Rows[0]["CUIT"]);
+                        userTienda.Estado = Convert.ToString(miTabla.Rows[0]["Estado"]);
+
+                        return userTienda;
+                    }
+                    else
+                        return null;
                 }
             
                 else return null;
@@ -278,15 +286,29 @@ namespace VisualStudio.VS.Datos
         }
 
         //Llena el DDL con las categorias
-        public DataTable obtenerCategorias()
+        public List<Categoria> obtenerCategorias()
         {
             if (conectar())
             {
                 DataTable MiTabla = new DataTable();
+                List<Categoria> categorias = new List<Categoria>();
                 SqlDataAdapter Comando = new SqlDataAdapter("SELECT * FROM Categoria", sqlconn);
                 var tabla = Comando.Fill(MiTabla);
 
-                return MiTabla;
+                int i = 0;
+                int cant = MiTabla.Rows.Count;
+
+                while (i < cant)
+                {
+                    Categoria categoria = new Categoria();
+                    categoria.Id = Convert.ToInt32(MiTabla.Rows[i]["Id"]);
+                    categoria.Nombre = Convert.ToString(MiTabla.Rows[i]["Nombre"]);
+
+                    categorias.Add(categoria);
+                    i++;
+                }
+
+                return categorias;
 
             }
             else return null;
