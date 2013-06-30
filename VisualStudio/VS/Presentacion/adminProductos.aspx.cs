@@ -126,7 +126,9 @@ namespace VisualStudio.VS
         protected void gvAdmProd_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             TableCell cell = gvAdmProd.Rows[e.RowIndex].Cells[0];
-            int id = Convert.ToInt32(cell.Text);
+            var colNoVisible = gvAdmProd.DataKeys[e.RowIndex].Value;
+
+            int id = Convert.ToInt32(colNoVisible);
             ProductoServicio productoServicio = new ProductoServicio();
             productoServicio.eliminar(id);
             gvAdmProd.DataBind();
