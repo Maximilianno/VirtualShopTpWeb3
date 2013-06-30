@@ -110,7 +110,7 @@ namespace VisualStudio.VS.Datos
            
         }
 
-        public Tienda loginTienda(string email, string password)
+        public DataTable LoginTienda(string email, string password)
         {
                 
                 if (conectar())
@@ -127,40 +127,38 @@ namespace VisualStudio.VS.Datos
 
                     DataTable miTabla = new DataTable();
                     miTabla.Load(miComando.ExecuteReader());
-                    if (miTabla.Rows.Count != 0)
-                    {
-                        Tienda userTienda = new Tienda();
-
-                        userTienda.Password = Convert.ToString(miTabla.Rows[0]["Password"]);
-                        userTienda.Id = Convert.ToInt32(miTabla.Rows[0]["Id"]);
-                        userTienda.Email = Convert.ToString(miTabla.Rows[0]["Email"]);
-                        userTienda.RazonSocial = Convert.ToString(miTabla.Rows[0]["RazonSocial"]);
-                        userTienda.CUIT = Convert.ToString(miTabla.Rows[0]["CUIT"]);
-                        userTienda.Estado = Convert.ToString(miTabla.Rows[0]["Estado"]);
-
-                        return userTienda;
-                    }
-                    else
-                        return null;
+                    return miTabla;
                 }
             
                 else return null;
         }
 
-        public void activarTiendaPorEmail(string modo, string email)
+        public bool ConfirmaTienda(string email, string uid)
         {
             if (conectar())
             {
 
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", email); //Envio el paramerto a insertar
-                SqlParameter paramEstado = new SqlParameter("@MODO", modo);
-                SqlCommand miComando = new SqlCommand("p_ActivarTienda", sqlconn); //ejecuto la StoreProcedure en la BD
+                SqlParameter paramUid = new SqlParameter("@UID", uid);
+                
+                SqlCommand miComando = new SqlCommand("p_ConfirmarTienda", sqlconn); //ejecuto la StoreProcedure en la BD
                 miComando.CommandType = CommandType.StoredProcedure;
+                
                 miComando.Parameters.Add(paramEmail);
-                miComando.Parameters.Add(paramEstado);
-                miComando.ExecuteNonQuery();
+                miComando.Parameters.Add(paramUid);
+
+                try
+                {
+                    miComando.ExecuteNonQuery();
+                    return true;
+                }
+                catch {
+                    return false;
+                }
+
             }
             sqlconn.Close();
+            return false;
         }
         #endregion Tienda
 
@@ -286,30 +284,18 @@ namespace VisualStudio.VS.Datos
         }
 
         //Llena el DDL con las categorias
-        public List<Categoria> obtenerCategorias()
+        public DataTable obtenerCategorias()
         {
             if (conectar())
             {
                 DataTable MiTabla = new DataTable();
-                List<Categoria> categorias = new List<Categoria>();
-                SqlDataAdapter Comando = new SqlDataAdapter("SELECT * FROM Categoria", sqlconn);
-                var tabla = Comando.Fill(MiTabla);
 
-                int i = 0;
-                int cant = MiTabla.Rows.Count;
+                SqlCommand miComando = new SqlCommand("p_ObtenerCategorias", sqlconn); //ejecuto la StoreProcedure en la BD
+                miComando.CommandType = CommandType.StoredProcedure;
+                miComando.ExecuteNonQuery();
 
-                while (i < cant)
-                {
-                    Categoria categoria = new Categoria();
-                    categoria.Id = Convert.ToInt32(MiTabla.Rows[i]["Id"]);
-                    categoria.Nombre = Convert.ToString(MiTabla.Rows[i]["Nombre"]);
-
-                    categorias.Add(categoria);
-                    i++;
-                }
-
-                return categorias;
-
+                MiTabla.Load(miComando.ExecuteReader());
+                return MiTabla;
             }
             else return null;
 

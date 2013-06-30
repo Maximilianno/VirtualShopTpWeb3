@@ -37,12 +37,28 @@ namespace VisualStudio.VS.Servicio
         public Tienda LoginTienda(string email, string password)
         {
             string convPass = Utilitarios.CalculateMD5Hash(password);
-            return nuevo.loginTienda(email, convPass);
+            DataTable miTabla = nuevo.LoginTienda(email, convPass);
+
+            if (miTabla.Rows.Count != 0)
+            {
+                Tienda userTienda = new Tienda();
+
+                userTienda.Password = Convert.ToString(miTabla.Rows[0]["Password"]);
+                userTienda.Id = Convert.ToInt32(miTabla.Rows[0]["Id"]);
+                userTienda.Email = Convert.ToString(miTabla.Rows[0]["Email"]);
+                userTienda.RazonSocial = Convert.ToString(miTabla.Rows[0]["RazonSocial"]);
+                userTienda.CUIT = Convert.ToString(miTabla.Rows[0]["CUIT"]);
+                userTienda.Estado = Convert.ToString(miTabla.Rows[0]["Estado"]);
+
+                return userTienda;
+            }
+            else
+                return null;
         }
 
-        public void ActivarTienda(string modo, string email)
+        public bool ConfirmaTienda(string email, string uid)
         {
-            nuevo.activarTiendaPorEmail(modo, email);
+           return nuevo.ConfirmaTienda(email, uid);
         }
         
 

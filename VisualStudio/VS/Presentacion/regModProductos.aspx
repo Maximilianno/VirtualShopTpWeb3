@@ -19,7 +19,7 @@
     
             <div>
                 <div class="oneControl"><asp:Label ID="lblDescripcion" runat="server" Text="Descripci&oacuten:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxDescripcion" runat="server"></asp:TextBox></div>
+                <div class="oneControl"><asp:TextBox ID="txtbxDescripcion" TextMode="MultiLine" runat="server"></asp:TextBox></div>
             </div>
             <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese una Descripcion" Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxDescripcion"></asp:RequiredFieldValidator>
 
@@ -34,7 +34,7 @@
                 <div class="oneControl"><asp:TextBox ID="txtbxPrecio" runat="server" ></asp:TextBox></div>
             </div>
             <asp:RequiredFieldValidator ID="rfvPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio"   Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxPrecio"></asp:RequiredFieldValidator>
-             <asp:RangeValidator ID="rgPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio correctamente." ControlToValidate="txtbxPrecio"  Display="Dynamic" Font-Size="X-Small" Type="Integer" MaximumValue="100000"  MinimumValue="1"></asp:RangeValidator>
+             <asp:RangeValidator ID="rgPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio correctamente." ControlToValidate="txtbxPrecio"  Display="Dynamic" Font-Size="X-Small" Type= "Double" MaximumValue="100000"  MinimumValue="1"></asp:RangeValidator>
             <div>
                 <div class="oneControl"> <asp:Label ID="catelblCategoria" runat="server" Text="Categor&iacutea:"></asp:Label></div>
                 <div class="oneControl"><uc:ElegirCategoria id="ucElegirCategoria" runat="server"/></div>
