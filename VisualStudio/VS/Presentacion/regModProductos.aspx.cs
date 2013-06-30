@@ -38,7 +38,7 @@ namespace VisualStudio.VS
             producto.idTienda = tiendaLog.Id;
             producto.Nombre = txtbxNombre.Text;
             producto.Descripcion = txtbxDescripcion.Text;
-            producto.Precio = Convert.ToInt32(txtbxPrecio.Text);
+            producto.Precio = Convert.ToSingle(txtbxPrecio.Text);
             producto.Stock = Convert.ToInt32(txtbxStock.Text);
             
             // producto.Imagen = fuTiendaImg.PostedFile.FileName;

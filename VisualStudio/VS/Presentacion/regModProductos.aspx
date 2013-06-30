@@ -13,13 +13,13 @@
             <div id = "dvMessage" runat = "server"></div>
             <div>
                 <div class="oneControl"><asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxNombre" runat="server"></asp:TextBox></div>
+                <div class="oneControl"><asp:TextBox ID="txtbxNombre" MaxLength="50" runat="server"></asp:TextBox></div>
             </div>
             <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese Nombre del producto"  Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxNombre"></asp:RequiredFieldValidator>
     
             <div>
                 <div class="oneControl"><asp:Label ID="lblDescripcion" runat="server" Text="Descripci&oacuten:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxDescripcion" TextMode="MultiLine" runat="server"></asp:TextBox></div>
+                <div class="oneControl"><asp:TextBox ID="txtbxDescripcion" MaxLength="100" TextMode="MultiLine" runat="server"></asp:TextBox></div>
             </div>
             <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese una Descripcion" Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxDescripcion"></asp:RequiredFieldValidator>
 

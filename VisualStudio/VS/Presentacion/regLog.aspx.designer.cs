@@ -13,13 +13,13 @@ namespace VisualStudio.VS {
     public partial class WebForm2 {
         
         /// <summary>
-        /// Control lblRazonSocual.
+        /// Control lblRazonSocial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRazonSocual;
+        protected global::System.Web.UI.WebControls.Label lblRazonSocial;
         
         /// <summary>
         /// Control txtbxRazonSocial.
