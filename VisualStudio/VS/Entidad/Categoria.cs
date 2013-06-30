@@ -7,7 +7,7 @@ namespace VisualStudio.Entidad
 {
     public class Categoria
     {
-        int Id{set; get; }
-        string Nombre { set; get; }
+        public int Id{set; get; }
+        public string Nombre { set; get; }
     }
 }

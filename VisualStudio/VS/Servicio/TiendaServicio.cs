@@ -5,6 +5,7 @@ using System.Web;
 using VisualStudio.VS.Datos;
 using System.Data;
 using VisualStudio.Entidad;
+using VisualStudio.VS.classes;
 
 namespace VisualStudio.VS.Servicio
 {
@@ -13,7 +14,7 @@ namespace VisualStudio.VS.Servicio
         
         AccesoADatos nuevo = new AccesoADatos();
         
-        public void insertar(Tienda tienda)
+        public void Insertar(Tienda tienda)
         {
             nuevo.insertarNuevaTienda(tienda);          
         }
@@ -23,22 +24,23 @@ namespace VisualStudio.VS.Servicio
         //    return nuevo.obtenerTienda(email);
         //}
 
-        public void editar(Tienda tienda)
+        public void Editar(Tienda tienda)
         {
             nuevo.editarTienda(tienda);
         }
 
-        public void eliminar(int ID)
+        public void Eliminar(int ID)
         {
             nuevo.eliminarTienda(ID);
         }
 
-        public DataTable loginTienda(string email, string password)
+        public Tienda LoginTienda(string email, string password)
         {
-            return nuevo.loginTienda(email, password);
+            string convPass = Utilitarios.CalculateMD5Hash(password);
+            return nuevo.loginTienda(email, convPass);
         }
 
-        public void activarTienda(string modo, string email)
+        public void ActivarTienda(string modo, string email)
         {
             nuevo.activarTiendaPorEmail(modo, email);
         }

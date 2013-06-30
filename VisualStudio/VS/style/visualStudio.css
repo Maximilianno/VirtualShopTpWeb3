@@ -104,6 +104,14 @@ a:hover { color:#000; }
 	margin:3px 30px 3px 30px;
 }
 
+.msjControlLog
+{	font:10px arial,helvetica,sans-serif; 
+ 	color: white;
+	float:left;
+	width:300px;
+}
+
+
 .oneControlTxtLog
 {	font:11px arial,helvetica,sans-serif; 
  	color: Black;

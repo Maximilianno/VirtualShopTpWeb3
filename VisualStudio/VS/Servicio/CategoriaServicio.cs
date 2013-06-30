@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using VisualStudio.VS.Datos;
+using VisualStudio.Entidad;
 
 namespace VisualStudio.VS.Servicio
 {
@@ -11,10 +12,11 @@ namespace VisualStudio.VS.Servicio
     {
         AccesoADatos nuevo = new AccesoADatos();
 
-        public static DataTable LlenarDDL()
+        public static List<Categoria> LlenarDDL()
         {
             AccesoADatos datos = new AccesoADatos();
-            DataTable categorias = datos.obtenerCategorias();
+            List<Categoria> categorias = new List<Categoria>();
+            categorias = datos.obtenerCategorias();
 
             return categorias;
         }

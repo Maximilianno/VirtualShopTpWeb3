@@ -9,7 +9,7 @@ namespace VisualStudio.Entidad
     {
         public String RazonSocial{set; get;}
         public int Id { set; get; }
-        public int IdRegistracion { set; get; }
+        public String IdRegistracion { set; get; }
         public String Email { set; get; }
         public String Password { set; get; }
         //string ConfirmPassword{ set; get; }
