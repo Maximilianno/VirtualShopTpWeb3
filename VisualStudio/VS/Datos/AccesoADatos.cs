@@ -30,14 +30,14 @@ namespace VisualStudio.VS.Datos
 
         public String cadenaDeConexion()
         {
-<<<<<<< HEAD
+
             SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
             miConexion.DataSource = "MAXI-HP";  //Nombre del servidor
             miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
             miConexion.IntegratedSecurity = true;
             return miConexion.ConnectionString;
-=======
-            System.Configuration.Configuration rootWebConfig =
+
+            System.Configuration.Configuration rootWebConfig = 
             System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/");
             System.Configuration.ConnectionStringSettings connString;
             //SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
@@ -46,7 +46,7 @@ namespace VisualStudio.VS.Datos
             //miConexion.IntegratedSecurity = true;
             connString = rootWebConfig.ConnectionStrings.ConnectionStrings["VirtualShopConnectionString"];
             return connString.ToString();
->>>>>>> origin/master
+
         }
         #endregion Conexion
         /*          FIN DE CONEXION         */
@@ -61,14 +61,10 @@ namespace VisualStudio.VS.Datos
                 SqlParameter paramEmail = new SqlParameter("@EMAIL", tienda.Email);
                 SqlParameter paramPassword = new SqlParameter("@PASSWORD", Utilitarios.CalculateMD5Hash(tienda.Password));
                 SqlParameter paramCUIT = new SqlParameter("@CUIT", tienda.CUIT);
-<<<<<<< HEAD
 
-                lista.Add(paramRazonSocial);
-
-=======
                 SqlParameter paramIdRegistracion = new SqlParameter("@UID", Utilitarios.CalculateMD5Hash(tienda.Email + "BirdIsTheWord"));
                 
->>>>>>> origin/master
+
                 SqlCommand miComando = new SqlCommand("p_CrearTienda", sqlconn); //ejecuto la StoreProcedure en la BD
                 miComando.CommandType = CommandType.StoredProcedure;
                 
@@ -134,7 +130,7 @@ namespace VisualStudio.VS.Datos
                     SqlParameter paramPassword = new SqlParameter("@PASSWORD", password);
                     
 
-                    SqlCommand miComando = new SqlCommand("p_Login", sqlconn); //ejecuto la StoreProcedure en la BD
+                    SqlCommand miComando = new SqlCommand("p_Login2", sqlconn); //ejecuto la StoreProcedure en la BD
                     miComando.CommandType = CommandType.StoredProcedure;
                     miComando.Parameters.Add(paramEmail);
                     miComando.Parameters.Add(paramPassword);
@@ -179,7 +175,7 @@ namespace VisualStudio.VS.Datos
         #endregion Tienda
 
         #region Producto
-        public void insertarNuevoProducto(Producto producto)
+        public void InsertarNuevoProducto(Producto producto)
         {
             if (conectar())
             {
@@ -214,7 +210,7 @@ namespace VisualStudio.VS.Datos
 
         
 
-        internal void editarProducto(Producto producto)
+        internal void EditarProducto(Producto producto)
         {
             if (conectar())
             {
@@ -240,7 +236,7 @@ namespace VisualStudio.VS.Datos
             }
         }
 
-        internal DataTable obtenerProductos(int idTienda)
+        internal DataTable ObtenerProductos(int idTienda)
         {
             if (conectar())
             {
@@ -259,7 +255,7 @@ namespace VisualStudio.VS.Datos
             else return null;
         }
 
-        internal void eliminarProducto(int id)
+        internal void EliminarProducto(int id)
         {
             if (conectar())
             {

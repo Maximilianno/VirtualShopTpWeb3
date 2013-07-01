@@ -31,5 +31,15 @@ namespace VisualStudio.VS
         protected void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
+        public void Habilitar()
+        {
+            category.Enabled = true;
+        }
+
+        public void Desabilitar()
+        {
+            category.Enabled = false;
+        }
     }
 }

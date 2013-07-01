@@ -22,7 +22,7 @@
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                         <asp:BoundField DataField="Stock" HeaderText="Stock" />
                         <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                        <asp:BoundField DataField="Categoria" HeaderText="Categoria" />
+                        <asp:BoundField DataField="IdCategoria" HeaderText="Categoria" />
                         <asp:CommandField ShowEditButton="true" ButtonType="Image" EditImageUrl="~/VS/img/edit.png"
                         UpdateImageUrl="~/VS/img/Cheeck.png" CancelImageUrl="~/VS/img/Cancel.png" />
 

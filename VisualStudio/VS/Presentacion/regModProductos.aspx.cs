@@ -90,7 +90,7 @@ namespace VisualStudio.VS
 
             try
             {
-                productoServicio.insertar(producto);
+                productoServicio.Insertar(producto);
                 dvMessage.InnerHtml = "<h4 class= \"alert_success\">El producto: " + txtbxNombre.Text + " ha sido insertado correctamente.</h4>";
             }
             catch (System.Data.SqlClient.SqlException)

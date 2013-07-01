@@ -14,9 +14,9 @@ namespace VisualStudio.VS.Servicio
     {
         AccesoADatos nuevo = new AccesoADatos();
 
-        public void insertar(Producto producto)
+        public void Insertar(Producto producto)
         {
-            nuevo.insertarNuevoProducto(producto);
+            nuevo.InsertarNuevoProducto(producto);
         }
 
         //public DataTable listar()
@@ -24,19 +24,39 @@ namespace VisualStudio.VS.Servicio
         //    return nuevo.obtenerEmpresa();
         //}
 
-        public void editar(Producto producto)
+        public void Editar(Producto producto)
         {
-            nuevo.editarProducto(producto);
+            nuevo.EditarProducto(producto);
         }
 
-        public void eliminar(int id)
+        public void Eliminar(int id)
         {
-            nuevo.eliminarProducto(id);
+            nuevo.EliminarProducto(id);
         }
 
-        public DataTable obtenerProductos(int idTienda)
+        public List<Producto> ObtenerProductos(int idTienda)
         {
-            return nuevo.obtenerProductos(idTienda);
+            List<Producto> listaDeProductos = new List<Producto>();
+
+            DataTable tabla = new DataTable();
+            tabla = nuevo.ObtenerProductos(idTienda);
+            int cant = tabla.Rows.Count;
+            int i=0;
+
+            while (i < cant)
+            {
+                Producto producto = new Producto();
+                producto.ID = Convert.ToInt32(tabla.Rows[i]["Id"]);
+                producto.Nombre = Convert.ToString(tabla.Rows[i]["Nombre"]);
+                producto.Stock = Convert.ToInt32(tabla.Rows[i]["Stock"]);
+                producto.Precio = Convert.ToInt32(tabla.Rows[i]["Precio"]);
+                producto.IdCategoria = Convert.ToInt32(tabla.Rows[i]["Categoria"]);
+                
+                listaDeProductos.Add(producto);
+                i++;
+            }
+
+            return listaDeProductos;
         }
 
         

@@ -12,6 +12,8 @@ namespace VisualStudio.VS
 {
     public partial class WebForm5 : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["TiendaOnline"] != null)
@@ -28,43 +30,45 @@ namespace VisualStudio.VS
                 ProductoServicio service = new ProductoServicio();
                 Tienda tienda = new Tienda();
                 tienda = (Tienda)Session["TiendaOnline"];
-
+                
                 int idTienda = tienda.Id;
-                DSTable = service.obtenerProductos(idTienda);
-                gvAdmProd.DataSource = service.obtenerProductos(idTienda);
+                List<Producto> listaProductoGeneral = new List<Producto>();
+                listaProductoGeneral = service.ObtenerProductos(idTienda);
+                Session["listaDeProductosGeneral"] = listaProductoGeneral;
+                gvAdmProd.DataSource = listaProductoGeneral;
                 //gvAdmProd.Columns[0].Visible = false;
                 gvAdmProd.DataBind();
                 
             }
         }
 
-        public DataTable DSTable
-        {
-            get
-            {
-                if (ViewState["DSTable"] == null)
-                    return (DataTable)ViewState["DSTable"];
-                return (DataTable)ViewState["DSTable"];
+        //public List<Producto> DSTable
+        //{
+        //    get
+        //    {
+        //        if (ViewState["DSTable"] == null)
+        //            return (List<Producto>)ViewState["DSTable"];
+        //        return (List<Producto>)ViewState["DSTable"];
 
-            }
-            set
-            {
-                ViewState["DSTable"] = value;
-            }
-        }
+        //    }
+        //    set
+        //    {
+        //        ViewState["DSTable"] = value;
+        //    }
+        //}
 
         protected void gvAdmProd_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvAdmProd.EditIndex = Convert.ToInt16(e.NewEditIndex);
             HiddenField1.Value = e.NewEditIndex.ToString();
-            gvAdmProd.DataSource = DSTable;
+            gvAdmProd.DataSource = (List<Producto>)Session["listaDeProductosGeneral"];
             gvAdmProd.DataBind();
         }
 
         protected void gvAdmProd_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
-            
+
             //TextBox t1 = new TextBox();
             TextBox t2 = new TextBox();
             TextBox t3 = new TextBox();
@@ -72,7 +76,7 @@ namespace VisualStudio.VS
             TextBox t5 = new TextBox();
             TextBox t6 = new TextBox();
             //Convert.ToInt16(HiddenField1.Value)
-            
+
             //t1 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[0].Controls[0];
             t2 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[1].Controls[0];
             t3 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[2].Controls[0];
@@ -94,32 +98,50 @@ namespace VisualStudio.VS
             producto.Descripcion = descripcion;
             producto.Stock = Convert.ToInt32(stock);
             producto.Precio = (float)System.Convert.ToSingle(precio);
+            producto.IdCategoria = Convert.ToInt32(categoria);
+            //CategoriaServicio categoriaServicio = new CategoriaServicio();
+            //int idCategoria = categoriaServicio.obtenerIdDeCategoria(categoria);
 
-            CategoriaServicio categoriaServicio = new CategoriaServicio();
-            int idCategoria = categoriaServicio.obtenerIdDeCategoria(categoria);
-            producto.IdCategoria = idCategoria;
+            int filaEditada = e.RowIndex;
+
+            //Edicion Visual
+            List<Producto> listaVisual = (List<Producto>)Session["listaDeProductosGeneral"];
+            Producto productoAModificar = listaVisual[filaEditada];
+            productoAModificar.ID = id;
+            productoAModificar.Nombre = nombre;
+            productoAModificar.Descripcion = descripcion;
+            productoAModificar.Stock = Convert.ToInt32(stock);
+            productoAModificar.Precio = (float)System.Convert.ToSingle(precio);
+            productoAModificar.IdCategoria = Convert.ToInt32(categoria);
+
+            listaVisual.Insert(filaEditada, productoAModificar);
 
             ProductoServicio productoServicio = new ProductoServicio();
-            productoServicio.editar(producto);
+            productoServicio.Editar(producto);
 
+
+           
+           
             //DSTable.Rows[e.RowIndex]["Id"] = id;
-            DSTable.Rows[e.RowIndex]["Nombre"] = nombre;
-            DSTable.Rows[e.RowIndex]["Descripcion"] = descripcion;
-            DSTable.Rows[e.RowIndex]["Stock"] = stock;
-            DSTable.Rows[e.RowIndex]["Precio"] = precio;
-            DSTable.Rows[e.RowIndex]["Categoria"] = categoria;
+            //DSTable.Rows[e.RowIndex]["Nombre"] = nombre;
+            //DSTable.Rows[e.RowIndex]["Descripcion"] = descripcion;
+            //DSTable.Rows[e.RowIndex]["Stock"] = stock;
+            //DSTable.Rows[e.RowIndex]["Precio"] = precio;
+            //DSTable.Rows[e.RowIndex]["Categoria"] = categoria;
 
-            
+
 
             gvAdmProd.EditIndex = -1;
-            gvAdmProd.DataSource = DSTable;
+            //gvAdmProd.DataSource = listaVisual;
             gvAdmProd.DataBind();
+
+            Response.Redirect("adminProductos.aspx");
         }
 
         protected void gvAdmProd_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvAdmProd.EditIndex = -1;
-            gvAdmProd.DataSource = DSTable;
+            gvAdmProd.DataSource = (List<Producto>)Session["listaDeProductosGeneral"]; 
             gvAdmProd.DataBind();
         }
 
@@ -130,7 +152,7 @@ namespace VisualStudio.VS
 
             int id = Convert.ToInt32(colNoVisible);
             ProductoServicio productoServicio = new ProductoServicio();
-            productoServicio.eliminar(id);
+            productoServicio.Eliminar(id);
             gvAdmProd.DataBind();
             Response.Redirect("adminProductos.aspx");
             

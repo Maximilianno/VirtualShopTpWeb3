@@ -36,7 +36,7 @@ namespace VisualStudio.VS.Servicio
 
         public Tienda LoginTienda(string email, string password)
         {
-            string convPass = Utilitarios.CalculateMD5Hash(password);
+            string convPass = /*Utilitarios.CalculateMD5Hash*/password;
             return nuevo.loginTienda(email, convPass);
         }
 

@@ -5,6 +5,7 @@ using System.Web;
 
 namespace VisualStudio.Entidad
 {
+    [Serializable]
     public class Producto
     {
         public string TiendaRazonSocial { set; get; }
