@@ -327,7 +327,7 @@ namespace VisualStudio.VS.Datos
         #endregion Categoria
 
         #region Ventas
-        internal DataTable obtenerVentas(int idTienda)
+        internal DataTable ObtenerVentas(int idTienda)
         {
             if (conectar())
             {
@@ -348,7 +348,7 @@ namespace VisualStudio.VS.Datos
             else return null;
         }
 
-        internal DataTable obtenerVentasPorId(DateTime fechaDeCompra)
+        internal DataTable ObtenerVentasPorId(DateTime fechaDeCompra)
         {
             if (conectar())
             {

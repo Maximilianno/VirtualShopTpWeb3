@@ -7,12 +7,12 @@ namespace VisualStudio.Entidad
 {
     public class Venta
     {
-        int Id { set; get; }
-        int IdProducto { set; get; }
-        string EmailComprador { set; get; }
-        DateTime FechaTransaction { set; get; }
-        int Cantidad { set; get; }
-        int PrecioUnitario { set; get; }
-        string Estado { set; get; }
+        public int Id { set; get; }
+        public int IdProducto { set; get; }
+        public string EmailComprador { set; get; }
+        public DateTime FechaTransaction { set; get; }
+        public int Cantidad { set; get; }
+        public int PrecioUnitario { set; get; }
+        public string Estado { set; get; }
     }
 }

@@ -30,7 +30,7 @@ namespace VisualStudio.VS
                 ProductoServicio service = new ProductoServicio();
                 Tienda tienda = new Tienda();
                 tienda = (Tienda)Session["TiendaOnline"];
-                
+
                 int idTienda = tienda.Id;
                 List<Producto> listaProductoGeneral = new List<Producto>();
                 listaProductoGeneral = service.ObtenerProductos(idTienda);
@@ -68,7 +68,7 @@ namespace VisualStudio.VS
         protected void gvAdmProd_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
-
+            
             //TextBox t1 = new TextBox();
             TextBox t2 = new TextBox();
             TextBox t3 = new TextBox();
@@ -78,19 +78,21 @@ namespace VisualStudio.VS
             //Convert.ToInt16(HiddenField1.Value)
 
             //t1 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[0].Controls[0];
+            var colNoVisible = gvAdmProd.DataKeys[e.RowIndex].Value;
             t2 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[1].Controls[0];
             t3 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[2].Controls[0];
             t4 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[3].Controls[0];
             t5 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[4].Controls[0];
-            t6 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[5].Controls[0];
-            var colNoVisible = gvAdmProd.DataKeys[e.RowIndex].Value;
+            //t6 = (TextBox)gvAdmProd.Rows[Convert.ToInt16(HiddenField1.Value)].Cells[5].Controls[0];
+            DropDownList combo = (DropDownList)gvAdmProd.Rows[e.RowIndex].FindControl("ddlPrueba");
+            
 
             int id = Convert.ToInt32(colNoVisible);
             string nombre = t2.Text;
             string descripcion = t3.Text;
             string stock = t4.Text;
             string precio = t5.Text;
-            string categoria = t6.Text;
+            string categoria = combo.SelectedValue;
 
             Producto producto = new Producto();
             producto.ID = id;
@@ -119,7 +121,7 @@ namespace VisualStudio.VS
             ProductoServicio productoServicio = new ProductoServicio();
             productoServicio.Editar(producto);
 
-
+            
            
            
             //DSTable.Rows[e.RowIndex]["Id"] = id;

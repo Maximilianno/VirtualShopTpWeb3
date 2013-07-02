@@ -39,8 +39,8 @@ namespace VisualStudio.VS
                 tienda = (Tienda)Session["TiendaOnline"];
 
                 int idTienda = tienda.Id;
-                DSTable = service.obtenerVentas(idTienda);
-                gvAdmCompras.DataSource = service.obtenerVentas(idTienda);
+                DSTable = service.ObtenerVentas(idTienda);
+                gvAdmCompras.DataSource = service.ObtenerVentas(idTienda);
                 gvAdmCompras.DataBind();
 
             }
@@ -133,9 +133,9 @@ namespace VisualStudio.VS
         {
             DateTime fechaDeCompra = Convert.ToDateTime(txtbxFechaDeCompra.Text);
             VentaServicio serviceVenta = new VentaServicio();
-            gvAdmCompras.DataSource = serviceVenta.buscarVentasPorId(fechaDeCompra);
+            gvAdmCompras.DataSource = serviceVenta.BuscarVentasPorId(fechaDeCompra);
             VentaServicio serviceCompra = new VentaServicio();
-            gvAdmCompras.DataSource = serviceCompra.buscarVentasPorId(fechaDeCompra);
+            gvAdmCompras.DataSource = serviceCompra.BuscarVentasPorId(fechaDeCompra);
             gvAdmCompras.DataBind();
 
         }
