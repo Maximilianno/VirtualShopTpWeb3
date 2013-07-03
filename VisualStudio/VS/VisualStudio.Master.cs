@@ -22,6 +22,7 @@ namespace VisualStudio.VS
             {
                 loge.Visible = true;
                 menu.Visible = true;
+                HyperLink1.Visible= false;
                 lblPrueba.Text = tiendaLogged.RazonSocial;
             }
         }

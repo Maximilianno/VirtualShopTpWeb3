@@ -7,27 +7,18 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace VisualStudio.VS {
+namespace VisualStudio.VS.pages {
     
     
-    public partial class WebForm3 {
+    public partial class confirmaRegistro {
         
         /// <summary>
-        /// Control ElegirCategoria.
+        /// Control dvRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::VisualStudio.VS.ucElegirCategoria ElegirCategoria;
-        
-        /// <summary>
-        /// Control lblLista.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLista;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvRegister;
     }
 }

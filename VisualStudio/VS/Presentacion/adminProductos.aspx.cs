@@ -157,6 +157,7 @@ namespace VisualStudio.VS
             productoServicio.Eliminar(id);
             gvAdmProd.DataBind();
             Response.Redirect("adminProductos.aspx");
+
             
         }
 

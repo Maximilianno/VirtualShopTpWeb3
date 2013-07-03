@@ -14,7 +14,7 @@
            
 
              <div class="mgrid">
-                 <asp:GridView ID="gvAdmProd" runat="server" AutoGenerateColumns="false" 
+                 <asp:GridView ID="gvAdmProd" runat="server" AutoGenerateColumns="false" HorizontalAlign="Center"
                     onrowcancelingedit="gvAdmProd_RowCancelingEdit" 
                     onrowediting="gvAdmProd_RowEditing" onrowupdating="gvAdmProd_RowUpdating" 
                     onrowdeleting="gvAdmProd_RowDeleting" DataKeyNames="Id">

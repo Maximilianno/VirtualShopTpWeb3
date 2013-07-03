@@ -27,14 +27,15 @@
     </div>
     
          <div class="mgrid">
-                 <asp:GridView ID="gvAdmCompras" runat="server" AutoGenerateColumns="false" 
+                 <asp:GridView ID="gvAdmCompras" runat="server" AutoGenerateColumns="false" HorizontalAlign="Center"
         onrowediting="gvAdmCompras_RowEditing" onrowupdating="gvAdmCompras_RowUpdating" 
-                     onrowdeleted="gvAdmCompras_RowDeleted" >
+                     onrowdeleted="gvAdmCompras_RowDeleted" DataKeyNames="Id" >
                     <Columns>
-                        <asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />
+                        <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
+                        <asp:BoundField DataField="NombreProducto" HeaderText="Nombre Producto" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
                         <asp:BoundField DataField="EmailComprador" HeaderText="Email del Comprador" />
-                        <asp:BoundField DataField="FechaTransaccion" HeaderText="Fecha" />
+                        <asp:BoundField DataField="FechaTransaction" HeaderText="Fecha" />
                         <asp:BoundField DataField="Estado" HeaderText="Estado" />
                         
                         <%--<asp:CommandField ShowEditButton="true" ButtonType="Image" EditImageUrl="~/VS/img/edit.png"
@@ -44,6 +45,8 @@
                         
                      
                     </Columns>
+                    <EmptyDataTemplate><i>(No hay datos que mostrar)</i>
+                    </EmptyDataTemplate>
                 </asp:GridView>
 
                 <asp:HiddenField ID="HiddenField1" runat="server" /><br /><br />

@@ -18,14 +18,17 @@
     <div class="container">
         <form id="form1" runat="server">
         <div id="header" class="header">
+            
             <asp:Panel ID="loge" class="login" runat="server" Visible="false">
                 <asp:Label ID="lblPrueba" class="titleLog " runat="server" Text=""></asp:Label>
                 <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
             </asp:Panel>
+            
             <div class="logo">
                 <asp:ImageButton CssClass="img" ID="logo" runat="server" ImageUrl="~/VS/img/LogoVirtualShop_small.png"
                     PostBackUrl="~/VS/Presentacion/default.aspx" />
             </div>
+            
             <div class="link">
                 <asp:HyperLink ID="HyperLink1" CssClass="link" runat="server" NavigateUrl="~/VS/Presentacion/regLog.aspx">Crea tu tienda virtual</asp:HyperLink>
             </div>

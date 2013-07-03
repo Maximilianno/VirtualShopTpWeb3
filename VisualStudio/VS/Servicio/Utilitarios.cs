@@ -39,8 +39,11 @@ namespace VisualStudio.VS.classes
                 //Aquí ponemos el asunto del correo
                 mail.Subject = "Registracion en Virtual Shop";
                 //Aquí ponemos el mensaje que incluirá el correo
+                
                 mail.IsBodyHtml = true;
-                mail.Body = "Bienvenido a nuestro <b>sistema de administracion de tiendas Virtual Shop!.</b></ br>Para confirmar su registracion, debe hacer clic en el link que está a continuacion: <a>http://localhost:45876/VS/pages/confirmaregistro.aspx?email="+dirEmail+"&uid="+uid+"</a>";
+                string port = HttpContext.Current.Request.Url.Port.ToString();
+
+                mail.Body = "Bienvenido a nuestro <b>sistema de administracion de tiendas Virtual Shop!.</b></ br>Para confirmar su registracion, debe hacer clic <a href = 'http://localhost:"+port+"/VS/Presentacion/confirmaregistro.aspx?email=" + dirEmail + "&uid=" + uid + "'> aqui</a>";
                 //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
                 mail.To.Add(dirEmail);
 

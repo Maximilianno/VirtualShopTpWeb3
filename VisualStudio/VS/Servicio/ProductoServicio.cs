@@ -48,6 +48,7 @@ namespace VisualStudio.VS.Servicio
                 Producto producto = new Producto();
                 producto.ID = Convert.ToInt32(tabla.Rows[i]["Id"]);
                 producto.Nombre = Convert.ToString(tabla.Rows[i]["Nombre"]);
+                producto.Descripcion = Convert.ToString(tabla.Rows[i]["Descripcion"]);
                 producto.Stock = Convert.ToInt32(tabla.Rows[i]["Stock"]);
                 producto.Precio = Convert.ToInt32(tabla.Rows[i]["Precio"]);
                 producto.IdCategoria = Convert.ToInt32(tabla.Rows[i]["Categoria"]);

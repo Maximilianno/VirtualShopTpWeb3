@@ -39,7 +39,7 @@ namespace VisualStudio.VS
                 tienda = (Tienda)Session["TiendaOnline"];
 
                 int idTienda = tienda.Id;
-                DSTable = service.ObtenerVentas(idTienda);
+                //DSTable = service.ObtenerVentas(idTienda);
                 gvAdmCompras.DataSource = service.ObtenerVentas(idTienda);
                 gvAdmCompras.DataBind();
 
@@ -131,13 +131,19 @@ namespace VisualStudio.VS
 
         protected void btnMostrarFecha_Click(object sender, EventArgs e)
         {
+            Tienda tienda = new Tienda();
+            tienda = (Tienda)Session["TiendaOnline"];
+            int idTienda = tienda.Id;
+
             DateTime fechaDeCompra = Convert.ToDateTime(txtbxFechaDeCompra.Text);
             VentaServicio serviceVenta = new VentaServicio();
-            gvAdmCompras.DataSource = serviceVenta.BuscarVentasPorId(fechaDeCompra);
-            VentaServicio serviceCompra = new VentaServicio();
-            gvAdmCompras.DataSource = serviceCompra.BuscarVentasPorId(fechaDeCompra);
-            gvAdmCompras.DataBind();
+            if (serviceVenta.BuscarVentasPorFecha(fechaDeCompra, idTienda)!=null)
+            {
+                gvAdmCompras.DataSource = serviceVenta.BuscarVentasPorFecha(fechaDeCompra, idTienda);
 
+                gvAdmCompras.DataBind();
+            }
+            
         }
 
         
