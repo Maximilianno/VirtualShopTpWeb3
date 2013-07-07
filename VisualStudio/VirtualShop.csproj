@@ -58,7 +58,6 @@
     <Content Include="VS\img\Cheeck.png" />
     <Content Include="VS\img\icn_alert_error.png" />
     <Content Include="VS\img\icn_alert_success.png" />
-    <Content Include="VS\Presentacion\WebForm1.aspx" />
     <Content Include="VS\Presentacion\confirmaRegistro.aspx" />
     <Content Include="VS\Script\jquery-1.4.1-vsdoc.js" />
     <Content Include="VS\Script\jquery-1.4.1.js" />
@@ -148,13 +147,6 @@
     </Compile>
     <Compile Include="VS\Presentacion\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="VS\Presentacion\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VS\Presentacion\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="VS\Servicio\CategoriaServicio.cs" />
     <Compile Include="VS\Servicio\VentaServicio.cs" />
