@@ -30,23 +30,11 @@ namespace VisualStudio.VS.Datos
 
         public String cadenaDeConexion()
         {
-
-            SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
-            miConexion.DataSource = "MAXI-HP";  //Nombre del servidor
-            miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
-            miConexion.IntegratedSecurity = true;
-            return miConexion.ConnectionString;
-
-            System.Configuration.Configuration rootWebConfig = 
+            System.Configuration.Configuration rootWebConfig =
             System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/");
             System.Configuration.ConnectionStringSettings connString;
-            //SqlConnectionStringBuilder miConexion = new SqlConnectionStringBuilder();
-            //miConexion.DataSource = "SERGIO-HP";  //Nombre del servidor
-            //miConexion.InitialCatalog = "VirtualShop";            //Nombre de Base de Datos
-            //miConexion.IntegratedSecurity = true;
             connString = rootWebConfig.ConnectionStrings.ConnectionStrings["VirtualShopConnectionString"];
             return connString.ToString();
-
         }
         #endregion Conexion
         /*          FIN DE CONEXION         */
