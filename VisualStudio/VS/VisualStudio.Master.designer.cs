@@ -40,15 +40,6 @@ namespace VisualStudio.VS {
         protected global::System.Web.UI.HtmlControls.HtmlLink Link1;
         
         /// <summary>
-        /// Control Link2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlLink Link2;
-        
-        /// <summary>
         /// Control Link5.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,33 @@ namespace VisualStudio.VS {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel loge;
+        
+        /// <summary>
+        /// Control imgCont.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imgCont;
+        
+        /// <summary>
+        /// Control imgTienda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgTienda;
+        
+        /// <summary>
+        /// Control controlsCont.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl controlsCont;
         
         /// <summary>
         /// Control lblPrueba.

@@ -1,9 +1,7 @@
 ﻿body{margin:20px 0px 0px 0px; 
      background-image:url('../img/Fondo.jpg');
     }
-
-div.tabArea{ font-size: 80%; font-weight: bold; margin: 0px 200px 0px 200px;}
-/*background-color: #B40404;*/
+div.tabArea{ font-size: 80%; font-weight: bold; margin: 10px 200px 0px 200px;}
 a.tab {  background:url(../img/nav.gif); border: 1px solid #000000;
 		border-bottom-width: 0px; padding: 2px 1em 2px 1em;
 		text-decoration: none;}
@@ -38,7 +36,7 @@ a:hover { color:#000; }
     }
 
 .main{	width:960px; 
-			min-height: 500px;
+			min-height: 1000px;
 			font:16px arial,helvetica,sans-serif; 
 			color:#04046a;
 			background-color:white;
@@ -57,7 +55,7 @@ a:hover { color:#000; }
 
 .login
 {    width:370px; 
-	 height:150px;
+	 height:152px;
 	 background-color:#04046a;
 	 border-style:solid; 
 	 border-width:1px ; 
@@ -84,16 +82,41 @@ a:hover { color:#000; }
 	float:left;
 	margin-top:60px;
 	margin-left:60px;
-
-	
+    }
+    
+.imgCont
+{
+    width: 152px;
+    height:152px;
+    float:left;
+    }
+    
+.controlsCont
+{
+    width: 200px;
+    height:150px;
+    float:right;
     }
 			
 .titleLog 
 {   display:block;
     font: 18px arial,helvetica,sans-serif; 
     color: white;
-    margin:5px;
     text-align:center;
+    }
+
+.botonLog {    
+    font-size:16px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:0px;
+        width:100px;
+        height:39px;
+        text-align:center;
+        margin-top:70px;
+    
     }
 		
 .oneControlLog
@@ -142,7 +165,6 @@ margin: 20px 3% 0 3%;
 margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
-/*border-radius: 5px;*/
 background: #F3D9D9 url(../img/icn_alert_error.png) no-repeat;
 background-position: 10px 10px;
 border: 1px solid #D20009;
@@ -166,3 +188,14 @@ color: #32510F;
 padding: 10px 0;
 text-indent: 40px;
 font-size: 14px;}
+
+.msjErr
+{ text-align:center;
+    }
+.dscErr
+{ margin-left: 15px;
+    }
+.imgErr
+{ margin: auto;
+  width:600px; 
+    }

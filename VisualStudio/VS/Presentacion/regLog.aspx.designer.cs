@@ -13,6 +13,15 @@ namespace VisualStudio.VS {
     public partial class WebForm2 {
         
         /// <summary>
+        /// Control dvMessage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMessage;
+        
+        /// <summary>
         /// Control lblRazonSocial.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,24 @@ namespace VisualStudio.VS {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCaptcha;
+        
+        /// <summary>
+        /// Control fuTiendaImg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuTiendaImg;
+        
+        /// <summary>
+        /// Control lblStatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
         /// Control btnRegistrar.

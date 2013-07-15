@@ -24,6 +24,9 @@ namespace VisualStudio.VS
                 menu.Visible = true;
                 HyperLink1.Visible= false;
                 lblPrueba.Text = tiendaLogged.RazonSocial;
+                imgTienda.ImageUrl = "~/VS/photos/" + Convert.ToString(tiendaLogged.Email) + "/" + tiendaLogged.Imagen; // Asi se usa la imagen
+                imgTienda.Height = 150;
+                imgTienda.Width = 150;
             }
         }
 

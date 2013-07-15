@@ -19,11 +19,6 @@ namespace VisualStudio.VS.Servicio
             nuevo.InsertarNuevoProducto(producto);
         }
 
-        //public DataTable listar()
-        //{
-        //    return nuevo.obtenerEmpresa();
-        //}
-
         public void Editar(Producto producto)
         {
             nuevo.EditarProducto(producto);
@@ -36,30 +31,19 @@ namespace VisualStudio.VS.Servicio
 
         public List<Producto> ObtenerProductos(int idTienda)
         {
-            List<Producto> listaDeProductos = new List<Producto>();
-
-            DataTable tabla = new DataTable();
-            tabla = nuevo.ObtenerProductos(idTienda);
-            int cant = tabla.Rows.Count;
-            int i=0;
-
-            while (i < cant)
-            {
-                Producto producto = new Producto();
-                producto.ID = Convert.ToInt32(tabla.Rows[i]["Id"]);
-                producto.Nombre = Convert.ToString(tabla.Rows[i]["Nombre"]);
-                producto.Descripcion = Convert.ToString(tabla.Rows[i]["Descripcion"]);
-                producto.Stock = Convert.ToInt32(tabla.Rows[i]["Stock"]);
-                producto.Precio = Convert.ToInt32(tabla.Rows[i]["Precio"]);
-                producto.IdCategoria = Convert.ToInt32(tabla.Rows[i]["Categoria"]);
-                
-                listaDeProductos.Add(producto);
-                i++;
-            }
-
-            return listaDeProductos;
+            return nuevo.ObtenerProductos(idTienda);
         }
 
-        
+        public List<Producto> ProductosPorTiendaCategoria(int idTienda,int idCategoria){
+            
+           return nuevo.ProductosPorTiendaCategoria(idTienda,idCategoria);
+
+        }
+        public List<Producto> Producto(int idProducto)
+        {
+
+            return nuevo.Producto(idProducto);
+
+        }
     }
 }

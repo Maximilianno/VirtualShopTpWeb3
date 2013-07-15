@@ -5,9 +5,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
      
         <div class="shops">
+        <!--
             <div class="column">
                 <p class="title" >Campera Mujer</p>
-                <a href="descripcionProducto.aspx" ><img alt="" src="../img/ropa/ADIDAS/adidas1.jpg"  class="imgCol" /></a>
+                <a href="descripcionProducto.aspx?idproducto="+producto.Id><img alt="" src="../img/ropa/ADIDAS/adidas1.jpg"  class="imgCol" /></a>
             </div>
             
             <div class="column">
@@ -16,10 +17,10 @@
             </div>
 
             <div class="column">
-                 <p class="title" >Pantalón Mujer</p>
-                <a href="descripcionProducto.aspx" ><img alt="" src="../img/ropa/ADIDAS/adidasPantalon.jpg"  class="imgCol" /></a>
-              
+                <p class="title" >Pantalón Mujer</p>
+                <a href="descripcionProducto.aspx" ><img alt="" src="../img/ropa/ADIDAS/adidasPantalon.jpg"  class="imgCol" /></a>              
             </div>
-
+            -->
        </div>
+
 </asp:Content>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ObtenerTiendasPorCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTiendasPorCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerTiendasPorCategoriaResult" type="tns:ArrayOfTienda" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTienda">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tienda" nillable="true" type="tns:Tienda" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tienda">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RazonSocial" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdRegistracion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUIT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistracion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProductosPorTiendaCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idTienda" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idCategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductosPorTiendaCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductosPorTiendaCategoriaResult" type="tns:ArrayOfProducto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProducto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Producto" nillable="true" type="tns:Producto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Producto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TiendaRazonSocial" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idTienda" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCategoria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Stock" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Producto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductoResult" type="tns:ArrayOfProducto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Venta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdTienda" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdProducto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PrecioUnitario" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VentaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerTiendasPorCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerTiendasPorCategoria" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTiendasPorCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerTiendasPorCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductosPorTiendaCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductosPorTiendaCategoria" />
+  </wsdl:message>
+  <wsdl:message name="ProductosPorTiendaCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductosPorTiendaCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:Producto" />
+  </wsdl:message>
+  <wsdl:message name="ProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="VentaSoapIn">
+    <wsdl:part name="parameters" element="tns:Venta" />
+  </wsdl:message>
+  <wsdl:message name="VentaSoapOut">
+    <wsdl:part name="parameters" element="tns:VentaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="ObtenerTiendasPorCategoria">
+      <wsdl:input message="tns:ObtenerTiendasPorCategoriaSoapIn" />
+      <wsdl:output message="tns:ObtenerTiendasPorCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductosPorTiendaCategoria">
+      <wsdl:input message="tns:ProductosPorTiendaCategoriaSoapIn" />
+      <wsdl:output message="tns:ProductosPorTiendaCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Producto">
+      <wsdl:input message="tns:ProductoSoapIn" />
+      <wsdl:output message="tns:ProductoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Venta">
+      <wsdl:input message="tns:VentaSoapIn" />
+      <wsdl:output message="tns:VentaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerTiendasPorCategoria">
+      <soap:operation soapAction="http://tempuri.org/ObtenerTiendasPorCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductosPorTiendaCategoria">
+      <soap:operation soapAction="http://tempuri.org/ProductosPorTiendaCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Producto">
+      <soap:operation soapAction="http://tempuri.org/Producto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Venta">
+      <soap:operation soapAction="http://tempuri.org/Venta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerTiendasPorCategoria">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerTiendasPorCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductosPorTiendaCategoria">
+      <soap12:operation soapAction="http://tempuri.org/ProductosPorTiendaCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Producto">
+      <soap12:operation soapAction="http://tempuri.org/Producto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Venta">
+      <soap12:operation soapAction="http://tempuri.org/Venta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://localhost:56475/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://localhost:56475/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

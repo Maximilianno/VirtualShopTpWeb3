@@ -11,22 +11,6 @@ namespace VisualStudio.VS
 {
     public partial class ucElegirCategoria : System.Web.UI.UserControl
     {
-
-        //[Bindable(true)]
-        //[Browsable(true)]
-        //public string Grade
-        //{
-        //    get
-        //    {
-        //        return category.SelectedValue.ToString();
-
-        //    }
-        //    set
-        //    {
-        //        category.SelectedValue = value;
-        //    }
-        //}
-
         public String SelectedValue
         {
             get

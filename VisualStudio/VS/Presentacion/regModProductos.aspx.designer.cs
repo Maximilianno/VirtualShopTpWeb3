@@ -157,31 +157,13 @@ namespace VisualStudio.VS {
         protected global::System.Web.UI.WebControls.Label catelblCategoria;
         
         /// <summary>
-        /// Control ucElegirCategoria.
+        /// Control ddlCategorias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::VisualStudio.VS.ucElegirCategoria ucElegirCategoria;
-        
-        /// <summary>
-        /// Control lbImg.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbImg;
-        
-        /// <summary>
-        /// Control imgProd.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProd;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategorias;
         
         /// <summary>
         /// Control fuTiendaImg.

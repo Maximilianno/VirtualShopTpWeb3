@@ -9,55 +9,67 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <div class="division">
         <p class="title">Registraci&oacuten de productos</p>
-         <div class="controlers">
+         <div runat="server" class="controlers">
+            
             <div id = "dvMessage" runat = "server"></div>
-            <div>
-                <div class="oneControl"><asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxNombre" MaxLength="50" runat="server"></asp:TextBox></div>
+            
+            <div runat="server" class="oneControl">
+                <div>
+                    <asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label>
+                    <asp:TextBox ID="txtbxNombre" MaxLength="50" runat="server"></asp:TextBox>
+                </div>
             </div>
+            
             <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese Nombre del producto"  Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxNombre"></asp:RequiredFieldValidator>
-    
-            <div>
-                <div class="oneControl"><asp:Label ID="lblDescripcion" runat="server" Text="Descripci&oacuten:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxDescripcion" MaxLength="100" TextMode="MultiLine" runat="server"></asp:TextBox></div>
+            
+            <div  runat="server" class="oneControl">
+
+                <div>
+                    <asp:Label ID="lblDescripcion" runat="server" Text="Descripci&oacuten:"></asp:Label>
+                    <asp:TextBox ID="txtbxDescripcion" MaxLength="500" TextMode="MultiLine" runat="server"></asp:TextBox>
+                </div>
+
             </div>
+            
             <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese una Descripcion" Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxDescripcion"></asp:RequiredFieldValidator>
 
-            <div>
-                <div class="oneControl"><asp:Label ID="lblStock" runat="server" Text="Cantidad en Stock:"></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxStock" runat="server"></asp:TextBox></div>
+            <div runat="server" class="oneControl">
+                <div>
+                    <asp:Label ID="lblStock" runat="server" Text="Cantidad en Stock:"></asp:Label>
+                    <asp:TextBox MaxLength="15" ID="txtbxStock" runat="server"></asp:TextBox>
+                </div>
             </div>
             <asp:RequiredFieldValidator ID="rfvStock" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese una cantidad de Stock" Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxStock"></asp:RequiredFieldValidator>
-             <asp:RangeValidator ID="rgStock" runat="server" ValidationGroup = "producto" ControlToValidate="txtbxStock" ErrorMessage="* Ingrese la cantidad correcta." Type="Integer" MaximumValue="10000" MinimumValue="1" Display="Dynamic" Font-Size="X-Small"></asp:RangeValidator>
-            <div>
-                <div class="oneControl"><asp:Label ID="lblPrecio" runat="server" Text="Precio:" ></asp:Label></div>
-                <div class="oneControl"><asp:TextBox ID="txtbxPrecio" runat="server" ></asp:TextBox></div>
+            <asp:RangeValidator ID="rgStock" runat="server" ValidationGroup = "producto" ControlToValidate="txtbxStock" ErrorMessage="* Ingrese la cantidad correcta." Type="Integer" MaximumValue="10000" MinimumValue="1" Display="Dynamic" Font-Size="X-Small"></asp:RangeValidator>
+            
+            <div runat="server" class="oneControl">
+                <div>
+                    <asp:Label ID="lblPrecio" runat="server" Text="Precio:" ></asp:Label>
+                    <asp:TextBox ID="txtbxPrecio" MaxLength="15"  runat="server" ></asp:TextBox>
+                </div>
             </div>
             <asp:RequiredFieldValidator ID="rfvPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio"   Display="Dynamic" Font-Size="X-Small" ControlToValidate="txtbxPrecio"></asp:RequiredFieldValidator>
-             <asp:RangeValidator ID="rgPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio correctamente." ControlToValidate="txtbxPrecio"  Display="Dynamic" Font-Size="X-Small" Type= "Double" MaximumValue="100000"  MinimumValue="1"></asp:RangeValidator>
-            <div>
-                <div class="oneControl"> <asp:Label ID="catelblCategoria" runat="server" Text="Categor&iacutea:"></asp:Label></div>
-                <div class="oneControl"><uc:ElegirCategoria id="ucElegirCategoria" runat="server"/></div>
-            </div>
-             
-             <div>
-                <div class="oneControl"> <asp:Label ID="lbImg" runat="server" Text="Imagen:"></asp:Label></div>
-                <div class="oneControl"> 
-                 <asp:Image ID="imgProd" runat="server"/>
+            <asp:RangeValidator ID="rgPrecio" runat="server" ValidationGroup = "producto" ErrorMessage="* Ingrese el precio correctamente." ControlToValidate="txtbxPrecio"  Display="Dynamic" Font-Size="X-Small" Type= "Double" MaximumValue="100000"  MinimumValue="1"></asp:RangeValidator>
+
+            <div runat="server" class="oneControl">
+                <div>
+                    <asp:Label ID="catelblCategoria" runat="server" Text="Categor&iacutea:"></asp:Label>
+                    <asp:DropDownList ID="ddlCategorias" runat="server"></asp:DropDownList>
                 </div>
-                <div class="oneControl"> <asp:FileUpload ID="fuTiendaImg" runat="server" /></div>
-                <div class = "oneControl">
+            </div>
+
+             <div runat="server" class="oneControl">
+                <div>
+                    <asp:FileUpload ID="fuTiendaImg" runat="server" />
+                </div>
+                <div>
                     <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
                 </div>
             </div>
-           
-            <div>
-                <div class="controlers">
-                    <asp:Button ID="create" runat="server" ValidationGroup = "producto" 
-                        Text="Crear" onclick="create_Click" />
-                    <asp:Button ID="mod" runat="server" ValidationGroup = "producto" Text="Modificar" />
-                    
-                </div>
+
+            <div runat="server" class="controlers">
+                <asp:Button ID="create" runat="server" ValidationGroup = "producto" Text="Crear" onclick="create_Click" />
+                <asp:Button ID="mod" runat="server" ValidationGroup = "producto" Text="Modificar" />                    
             </div>
             
         </div>

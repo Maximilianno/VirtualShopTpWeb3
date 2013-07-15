@@ -14,6 +14,14 @@ namespace VisualStudio.VS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ddlCategorias.DataSource = CategoriaServicio.LlenarDDL();
+                ddlCategorias.DataTextField= "Nombre";
+                ddlCategorias.DataValueField="Id";
+                ddlCategorias.DataBind();
+            }
+            
             if (Session["TiendaOnline"] != null)
             {
                 Master.FindControl("noLog").Visible = false;
@@ -22,12 +30,6 @@ namespace VisualStudio.VS
             }
             else
                 Response.Redirect("default.aspx");
-
-            if (imgProd.ImageUrl == "")
-                imgProd.Visible = false;
-            else
-                imgProd.Visible = true;
-
         }
         protected void create_Click(object sender, EventArgs e)
         {
@@ -40,12 +42,9 @@ namespace VisualStudio.VS
             producto.Descripcion = txtbxDescripcion.Text;
             producto.Precio = Convert.ToSingle(txtbxPrecio.Text);
             producto.Stock = Convert.ToInt32(txtbxStock.Text);
-            
-            // producto.Imagen = fuTiendaImg.PostedFile.FileName;
 
             lblStatus.Text = "";
             String pathImagen = "";
-            //tiendaLog = (Tienda)Session["TiendaOnline"]; //La idea es levantar la tienda de la session...
 
             if (fuTiendaImg.HasFile)
             {
@@ -61,9 +60,7 @@ namespace VisualStudio.VS
                 {
                     if (Convert.ToInt64(fuTiendaImg.PostedFile.ContentLength) < 100000000)
                     {
-                        // Esto debería cambiarse porque tiene el dir de mi PC.
-
-                        String photoFolder = Path.Combine(Server.MapPath("~/VS/photos"), tiendaLog.Email);
+                        String photoFolder = Path.Combine(Server.MapPath("~/VS/photos"), Convert.ToString(tiendaLog.Id));
                         if (!Directory.Exists(photoFolder))
                         {
                             Directory.CreateDirectory(photoFolder);
@@ -86,7 +83,7 @@ namespace VisualStudio.VS
                 lblStatus.Text = "No se seleccionó ningún archivo.";
 
             producto.Imagen = pathImagen;
-            producto.IdCategoria = Convert.ToInt32(ucElegirCategoria.SelectedValue);
+            producto.IdCategoria = Convert.ToInt32(ddlCategorias.SelectedValue);
 
             try
             {
@@ -99,10 +96,6 @@ namespace VisualStudio.VS
                 dvMessage.InnerHtml = "<h4 class= \"alert_error\">Ha ocurrido un error al insertar el producto: " + txtbxNombre.Text + ".</h4>";
 
             }
-
-            imgProd.ImageUrl = "~/VS/photos/" + tiendaLog.Email + "/" + pathImagen; // Asi se usa la imagen
-            imgProd.Height = 150;
-            imgProd.Width = 150;
         }
     }
 }

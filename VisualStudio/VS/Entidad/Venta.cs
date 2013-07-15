@@ -14,7 +14,7 @@ namespace VisualStudio.Entidad
         public string EmailComprador { set; get; }
         public DateTime FechaTransaction { set; get; }
         public int Cantidad { set; get; }
-        public int PrecioUnitario { set; get; }
+        public float PrecioUnitario { set; get; }
         public string Estado { set; get; }
     }
 }

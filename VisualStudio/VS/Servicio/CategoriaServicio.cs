@@ -15,27 +15,12 @@ namespace VisualStudio.VS.Servicio
         public static List<Categoria> LlenarDDL()
         {
             AccesoADatos datos = new AccesoADatos();
-            List<Categoria> categorias = new List<Categoria>();
-            DataTable MiTabla = datos.obtenerCategorias();
-            int i = 0;
-            int cant = MiTabla.Rows.Count;
-
-            while (i < cant)
-            {
-                Categoria categoria = new Categoria();
-                categoria.Id = Convert.ToInt32(MiTabla.Rows[i]["Id"]);
-                categoria.Nombre = Convert.ToString(MiTabla.Rows[i]["Nombre"]);
-
-                categorias.Add(categoria);
-                i++;
-            }
-            
-            return categorias;
+            return datos.ObtenerCategorias();
         }
 
         public int obtenerIdDeCategoria(string nombre)
         {
-            return nuevo.obtenerIdDeCategoria(nombre);
+            return nuevo.ObtenerIdDeCategoria(nombre);
         }
 
     }

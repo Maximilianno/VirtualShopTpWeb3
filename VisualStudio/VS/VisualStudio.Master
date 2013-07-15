@@ -9,7 +9,6 @@
     <script src="../js/JScript.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" id="visualStudio" type="text/css" href="~/VS/style/visualStudio.css" />
     <link rel="stylesheet" id="Link1" type="text/css" href="~/VS/style/adminProductos.css" />
-    <link rel="stylesheet" id="Link2" type="text/css" href="~/VS/style/descripcionProducto.css" />
     <link rel="stylesheet" id="Link5" type="text/css" href="~/VS/style/regLog.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -19,9 +18,15 @@
         <form id="form1" runat="server">
         <div id="header" class="header">
             
-            <asp:Panel ID="loge" class="login" runat="server" Visible="false">
-                <asp:Label ID="lblPrueba" class="titleLog " runat="server" Text=""></asp:Label>
-                <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+            <asp:Panel ID="loge" CssClass="login" runat="server" Visible="false">  
+                <div id= "imgCont" runat = "server" class = "imgCont">
+                    <asp:Image ID="imgTienda" runat="server"/>
+                </div>
+                <div id="controlsCont" runat = "server" class = "controlsCont">
+                    <asp:Label ID="lblPrueba" CssClass="titleLog" runat="server" Text=""></asp:Label>
+                    <br/>
+                    <asp:Button ID="btnLogout" CssClass="botonLog" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+                </div>
             </asp:Panel>
             
             <div class="logo">
@@ -72,16 +77,20 @@
             <asp:ContentPlaceHolder ID="registracion" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <div class="main">
-            <asp:Panel ID="menu" runat="server" class="tabArea" Visible="false">
-                <br />
-                <a class="tab" href="Perfil.aspx">Perfil</a> <a class="tab" href="administracionDeCompras.aspx">
-                    Administracion De Ventas</a> <a class="tab" href="adminProductos.aspx">Administracion
-                        De Productos</a>
-            </asp:Panel>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+                <asp:Panel ID="menu" runat="server" CssClass="tabArea" Visible="false">
+                    <br />
+                    <a class="tab" href="Perfil.aspx">Perfil</a> <a class="tab" href="administracionDeCompras.aspx">
+                        Administracion De Ventas</a> <a class="tab" href="adminProductos.aspx">Administracion
+                            De Productos</a>
+                </asp:Panel>
+            <div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
+
         <div id="footer" class="footer">
             <p>
                 Trabajo pr&aacute;ctico realizado por:</p>
