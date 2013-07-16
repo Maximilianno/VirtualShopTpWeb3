@@ -24,3 +24,5 @@ C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\
 C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\VisualStudio\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\VisualStudio\obj\Debug\VisualStudio.dll
 C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\VisualStudio\obj\Debug\VisualStudio.pdb
+C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\VisualStudio\bin\log4net.dll
+C:\Users\Sergio\Desktop\Programacion Web III\Trabajo Practico\VirtualShopTpWeb3\VisualStudio\bin\log4net.xml

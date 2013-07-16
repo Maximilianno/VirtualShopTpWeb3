@@ -7,11 +7,15 @@ using System.Web.UI.WebControls;
 using VisualStudio.VS.Servicio;
 using VisualStudio.Entidad;
 using System.IO;
+using log4net; 
 
 namespace VisualStudio.VS
 {
     public partial class WebForm7 : System.Web.UI.Page
     {
+        private static readonly ILog log = LogManager.GetLogger(
+        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -90,11 +94,15 @@ namespace VisualStudio.VS
                 productoServicio.Insertar(producto);
                 dvMessage.InnerHtml = "<h4 class= \"alert_success\">El producto: " + txtbxNombre.Text + " ha sido insertado correctamente.</h4>";
             }
-            catch (System.Data.SqlClient.SqlException)
+            catch (System.Data.SqlClient.SqlException ex)
             {
 
                 dvMessage.InnerHtml = "<h4 class= \"alert_error\">Ha ocurrido un error al insertar el producto: " + txtbxNombre.Text + ".</h4>";
-
+                
+                if (log.IsErrorEnabled)
+                {
+                    log.Error("Page Load failed : " + ex.Message);
+                }
             }
         }
     }
