@@ -26,10 +26,10 @@ namespace VisualStudio.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:56475/Service1.asmx")]
-        public string VisualStudio_VirtualShopWS_Service1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:56472/VS/WS/WebService1.asmx")]
+        public string VisualStudio_localhost_WebService1 {
             get {
-                return ((string)(this["VisualStudio_VirtualShopWS_Service1"]));
+                return ((string)(this["VisualStudio_localhost_WebService1"]));
             }
         }
     }

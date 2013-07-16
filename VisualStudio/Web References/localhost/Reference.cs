@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace VisualStudio.VirtualShopWS {
+namespace VisualStudio.localhost {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -26,8 +26,8 @@ namespace VisualStudio.VirtualShopWS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="Service1Soap", Namespace="http://tempuri.org/")]
-    public partial class Service1 : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    [System.Web.Services.WebServiceBindingAttribute(Name="WebService1Soap", Namespace="http://tempuri.org/")]
+    public partial class WebService1 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback ObtenerTiendasPorCategoriaOperationCompleted;
         
@@ -40,8 +40,8 @@ namespace VisualStudio.VirtualShopWS {
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
-        public Service1() {
-            this.Url = global::VisualStudio.Properties.Settings.Default.VisualStudio_VirtualShopWS_Service1;
+        public WebService1() {
+            this.Url = global::VisualStudio.Properties.Settings.Default.VisualStudio_localhost_WebService1;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -250,6 +250,8 @@ namespace VisualStudio.VirtualShopWS {
         
         private string passwordField;
         
+        private string imagenField;
+        
         private string cUITField;
         
         private string estadoField;
@@ -303,6 +305,16 @@ namespace VisualStudio.VirtualShopWS {
             }
             set {
                 this.passwordField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Imagen {
+            get {
+                return this.imagenField;
+            }
+            set {
+                this.imagenField = value;
             }
         }
         

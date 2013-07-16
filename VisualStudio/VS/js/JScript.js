@@ -4,7 +4,7 @@
         var htmlString = "<div class='shops' id = 'divTablaTienda'>";
         $.ajax({
             type: "POST",
-            url: "http://localhost:56475/Service1.asmx/ObtenerTiendasPorCategoria",
+            url: "../WS/WebService1.asmx/ObtenerTiendasPorCategoria",
             data: "{'idCategoria':'" + valueSelected + "'}",
             async: true,
             contentType: "application/json;charset=utf-8",
@@ -32,7 +32,7 @@
         var htmlString = "<div class='shops' id = 'divTablaTienda'>";
         $.ajax({
             type: "POST",
-            url: "http://localhost:56475/Service1.asmx/ProductosPorTiendaCategoria",
+            url: "../WS/WebService1.asmx/ProductosPorTiendaCategoria",
             data: "{'idTienda':'" + idTienda + "','idCategoria':'" + idCategoria + "'}",
             async: true,
             contentType: "application/json;charset=utf-8",
@@ -69,7 +69,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:56475/Service1.asmx/Producto",
+            url: "../WS/WebService1.asmx/Producto",
             data: "{'idProducto':'" + idProducto + "'}",
             async: true,
             contentType: "application/json;charset=utf-8",
@@ -109,7 +109,7 @@
         var htmlString = "<div>";
         $.ajax({
             type: "POST",
-            url: "http://localhost:56475/Service1.asmx/Venta",
+            url: "../WS/WebService1.asmx/Venta",
             data: "{'IdTienda':'" + idTienda + "','Email':'" + email + "','IdProducto':'" + idProducto + "','PrecioUnitario':'" + precioUnit + "','Cantidad':'" + cant + "'}",
             async: true,
             contentType: "application/json;charset=utf-8",

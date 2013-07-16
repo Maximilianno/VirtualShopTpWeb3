@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualShop", "VisualStudio\VirtualShop.csproj", "{FEF76B6A-0A3A-44D9-8928-74490B198697}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualShopWS", "VirtualShopWS\VirtualShopWS.csproj", "{83D1FCDB-B68A-4A8A-ABC4-B6235548ECDA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{FEF76B6A-0A3A-44D9-8928-74490B198697}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEF76B6A-0A3A-44D9-8928-74490B198697}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEF76B6A-0A3A-44D9-8928-74490B198697}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83D1FCDB-B68A-4A8A-ABC4-B6235548ECDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83D1FCDB-B68A-4A8A-ABC4-B6235548ECDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83D1FCDB-B68A-4A8A-ABC4-B6235548ECDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83D1FCDB-B68A-4A8A-ABC4-B6235548ECDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

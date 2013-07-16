@@ -28,6 +28,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="IdRegistracion" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="CUIT" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="FechaRegistracion" type="s:dateTime" />
@@ -124,7 +125,7 @@
   <wsdl:message name="VentaSoapOut">
     <wsdl:part name="parameters" element="tns:VentaResponse" />
   </wsdl:message>
-  <wsdl:portType name="Service1Soap">
+  <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="ObtenerTiendasPorCategoria">
       <wsdl:input message="tns:ObtenerTiendasPorCategoriaSoapIn" />
       <wsdl:output message="tns:ObtenerTiendasPorCategoriaSoapOut" />
@@ -142,7 +143,7 @@
       <wsdl:output message="tns:VentaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ObtenerTiendasPorCategoria">
       <soap:operation soapAction="http://tempuri.org/ObtenerTiendasPorCategoria" style="document" />
@@ -181,7 +182,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ObtenerTiendasPorCategoria">
       <soap12:operation soapAction="http://tempuri.org/ObtenerTiendasPorCategoria" style="document" />
@@ -220,12 +221,12 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="Service1">
-    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
-      <soap:address location="http://localhost:56475/Service1.asmx" />
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:56472/VS/WS/WebService1.asmx" />
     </wsdl:port>
-    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
-      <soap12:address location="http://localhost:56475/Service1.asmx" />
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:56472/VS/WS/WebService1.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

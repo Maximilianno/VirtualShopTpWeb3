@@ -122,14 +122,19 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\VirtualShopWS\Producto.datasource">
+    <None Include="Web References\localhost\Producto.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\VirtualShopWS\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\VirtualShopWS\Service1.disco" />
+    <None Include="Web References\localhost\Tienda.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\WebService1.wsdl" />
+    <Content Include="VS\WS\WebService1.asmx" />
+    <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -139,10 +144,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="Web References\VirtualShopWS\Service1.wsdl" />
-    <None Include="Web References\VirtualShopWS\Tienda.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -274,7 +275,11 @@
     <Compile Include="VS\Presentacion\ventasConf.aspx.designer.cs">
       <DependentUpon>ventasConf.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\VirtualShopWS\Reference.cs">
+    <Compile Include="VS\WS\WebService1.asmx.cs">
+      <DependentUpon>WebService1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -298,16 +303,16 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:56475/Service1.asmx">
+    <WebReferenceUrl Include="http://localhost:56472/VS/WS/WebService1.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\VirtualShopWS\</RelPath>
-      <UpdateFromURL>http://localhost:56475/Service1.asmx</UpdateFromURL>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:56472/VS/WS/WebService1.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>VisualStudio_VirtualShopWS_Service1</CachedSettingsPropName>
+      <CachedSettingsPropName>VisualStudio_localhost_WebService1</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
